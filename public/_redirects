@@ -1,0 +1,5 @@
+# Proxy JPL Sentry API to avoid CORS on production (Netlify)
+/api/sentry  https://ssd-api.jpl.nasa.gov/sentry.api  200
+
+# SPA fallback
+/*  /index.html  200

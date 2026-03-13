@@ -31,7 +31,7 @@ export function PlanetPositions({ lang, t }: PlanetPositionsProps) {
             {t("planets.title")}
           </h2>
         </div>
-        <p className="text-[10px] uppercase tracking-[0.3em] text-[rgba(215,230,255,0.30)] mb-8">
+        <p className="text-[11px] uppercase tracking-[0.3em] text-[rgba(215,230,255,0.40)] mb-8">
           {t("planets.subtitle")}
         </p>
 
@@ -50,13 +50,13 @@ export function PlanetPositions({ lang, t }: PlanetPositionsProps) {
           {/* Moon */}
           <div className="rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(70,130,220,0.10)] p-4 flex flex-col items-center text-center">
             <span className="text-2xl mb-1">{moon.phaseEmoji}</span>
-            <span className="text-xs font-sans text-[rgba(215,230,255,0.70)] mb-2">
+            <span className="text-[11px] font-sans text-[rgba(215,230,255,0.75)] mb-2">
               {lang === "de" ? moon.phaseNameDe : moon.phaseName}
             </span>
-            <span className="text-xl leading-none mb-0.5 text-[rgba(215,230,255,0.60)]">
+            <span className="text-xl leading-none mb-1 text-[rgba(215,230,255,0.65)]">
               {moon.sign.glyph}
             </span>
-            <span className="text-[10px] text-[rgba(215,230,255,0.40)]">
+            <span className="text-[11px] text-[rgba(215,230,255,0.45)]">
               {signName(moon.sign)} {moon.degree.toFixed(0)}&deg;
             </span>
           </div>
@@ -101,13 +101,13 @@ function PlanetCard({
       >
         {symbol}
       </span>
-      <span className="text-[10px] uppercase tracking-[0.15em] text-[rgba(215,230,255,0.45)] mb-3">
+      <span className="text-[11px] uppercase tracking-[0.15em] text-[rgba(215,230,255,0.50)] mb-3">
         {name}
       </span>
-      <span className="text-xl leading-none mb-0.5 text-[rgba(215,230,255,0.60)]">
+      <span className="text-xl leading-none mb-1 text-[rgba(215,230,255,0.65)]">
         {signGlyph}
       </span>
-      <span className="text-[10px] text-[rgba(215,230,255,0.40)]">
+      <span className="text-[11px] text-[rgba(215,230,255,0.45)]">
         {signName} {degree.toFixed(0)}&deg;
       </span>
     </div>

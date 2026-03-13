@@ -14,7 +14,7 @@ export function ArticleTeaser() {
       {/* Section header */}
       <div className="flex items-end justify-between mb-8">
         <div>
-          <p className="text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/60 mb-2">
+          <p className="text-[11px] uppercase tracking-[0.35em] text-[#D4AF37]/70 mb-2">
             Wissen · Astronomie
           </p>
           <h2 className="font-serif text-2xl sm:text-3xl text-white leading-tight">
@@ -24,7 +24,7 @@ export function ArticleTeaser() {
         </div>
         <Link
           to="/artikel"
-          className="hidden sm:flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-[rgba(215,230,255,0.35)] hover:text-[#D4AF37] transition-colors shrink-0"
+          className="hidden sm:flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-[rgba(215,230,255,0.40)] hover:text-[#D4AF37] transition-colors shrink-0"
         >
           Alle Artikel
           <ArrowRight className="w-3.5 h-3.5" />
@@ -58,7 +58,7 @@ export function ArticleTeaser() {
                   {article.tags.slice(0, 2).map((tag) => (
                     <span
                       key={tag}
-                      className="text-[8px] uppercase tracking-widest text-[#D4AF37]/70 bg-[#020509]/70 backdrop-blur-sm border border-[#D4AF37]/20 px-2 py-0.5 rounded-full"
+                      className="text-[10px] uppercase tracking-widest text-[#D4AF37]/80 bg-[#020509]/70 backdrop-blur-sm border border-[#D4AF37]/20 px-2 py-0.5 rounded-full"
                     >
                       {tag}
                     </span>
@@ -76,12 +76,12 @@ export function ArticleTeaser() {
                   {article.title}
                 </h3>
 
-                <p className="text-[rgba(215,230,255,0.50)] text-sm leading-relaxed flex-1 line-clamp-3">
+                <p className="text-[rgba(215,230,255,0.55)] text-sm leading-relaxed flex-1 line-clamp-3">
                   {article.excerpt}
                 </p>
 
                 <div className="mt-5 flex items-center justify-between">
-                  <span className="text-[10px] text-[rgba(215,230,255,0.22)]">
+                  <span className="text-[11px] text-[rgba(215,230,255,0.35)]">
                     {article.readingTime} Min. Lesezeit
                   </span>
                   <span className="flex items-center gap-1 text-[#D4AF37]/60 text-xs group-hover:text-[#D4AF37] transition-colors">
@@ -99,7 +99,7 @@ export function ArticleTeaser() {
       <div className="sm:hidden mt-6 text-center">
         <Link
           to="/artikel"
-          className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-[rgba(215,230,255,0.35)] hover:text-[#D4AF37] transition-colors"
+          className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-[rgba(215,230,255,0.40)] hover:text-[#D4AF37] transition-colors"
         >
           Alle Artikel ansehen
           <ArrowRight className="w-3.5 h-3.5" />

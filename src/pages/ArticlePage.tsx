@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getArticle, articles } from "../lib/parseArticle";
 import type { Lang } from "../lib/i18n";
+import type { Element } from "hast";
 
 interface Props {
   lang: Lang;
@@ -36,7 +37,7 @@ export function ArticlePage({ t, bazodiacUrl }: Props) {
       <div className="max-w-3xl mx-auto px-4 sm:px-8 -mt-24 relative z-10 pt-8">
         <Link
           to="/artikel"
-          className="text-[rgba(215,230,255,0.35)] text-xs hover:text-[#D4AF37] transition-colors mb-6 inline-block"
+          className="text-[rgba(215,230,255,0.40)] text-xs hover:text-[#D4AF37] transition-colors mb-6 inline-block"
         >
           ← Alle Artikel
         </Link>
@@ -46,7 +47,7 @@ export function ArticlePage({ t, bazodiacUrl }: Props) {
             {article.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[9px] uppercase tracking-widest text-[#D4AF37]/60 bg-[#D4AF37]/5 border border-[#D4AF37]/15 px-2 py-0.5 rounded-full"
+                className="text-[10px] uppercase tracking-widest text-[#D4AF37]/70 bg-[#D4AF37]/5 border border-[#D4AF37]/15 px-2 py-0.5 rounded-full"
               >
                 {tag}
               </span>
@@ -54,7 +55,7 @@ export function ArticlePage({ t, bazodiacUrl }: Props) {
           </div>
         )}
 
-        <div className="flex items-center gap-3 text-[10px] text-[rgba(215,230,255,0.25)] mb-8">
+        <div className="flex items-center gap-3 text-[11px] text-[rgba(215,230,255,0.35)] mb-8">
           <span>{article.readingTime} Min. Lesezeit</span>
           <span>·</span>
           <span>Bazodiac Sky</span>
@@ -81,13 +82,23 @@ export function ArticlePage({ t, bazodiacUrl }: Props) {
                 {children}
               </h3>
             ),
-            p: ({ children }) => (
-              <p className="text-[rgba(215,230,255,0.72)] leading-relaxed mb-5 text-base">
-                {children}
-              </p>
-            ),
+            // Render p as div when it only wraps a block-level element (e.g. figure from img)
+            // to avoid invalid HTML nesting (<figure> inside <p>)
+            p: ({ children, node }) => {
+              const childNodes = (node as Element)?.children ?? [];
+              const isImageWrapper =
+                childNodes.length === 1 &&
+                childNodes[0].type === "element" &&
+                (childNodes[0] as Element).tagName === "img";
+              if (isImageWrapper) return <>{children}</>;
+              return (
+                <p className="text-[rgba(215,230,255,0.72)] leading-relaxed mb-5 text-base">
+                  {children}
+                </p>
+              );
+            },
             blockquote: ({ children }) => (
-              <blockquote className="border-l-2 border-[#D4AF37]/40 pl-5 my-6 text-[rgba(215,230,255,0.5)] italic">
+              <blockquote className="border-l-2 border-[#D4AF37]/40 pl-5 my-6 text-[rgba(215,230,255,0.55)] italic">
                 {children}
               </blockquote>
             ),
@@ -102,7 +113,7 @@ export function ArticlePage({ t, bazodiacUrl }: Props) {
                   className="w-full rounded-lg opacity-90"
                 />
                 {alt && (
-                  <figcaption className="text-center text-[10px] text-[rgba(215,230,255,0.3)] mt-2 leading-relaxed">
+                  <figcaption className="text-center text-[11px] text-[rgba(215,230,255,0.40)] mt-2 leading-relaxed">
                     {alt}
                   </figcaption>
                 )}
@@ -143,13 +154,13 @@ export function ArticlePage({ t, bazodiacUrl }: Props) {
       {/* CTA */}
       <section className="max-w-3xl mx-auto px-4 sm:px-8 mb-16">
         <div className="bg-[#0a1120] border border-[#D4AF37]/20 rounded-2xl p-8 text-center">
-          <p className="text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/60 mb-3">
+          <p className="text-[11px] uppercase tracking-[0.35em] text-[#D4AF37]/70 mb-3">
             Fu-Ring
           </p>
           <h3 className="font-serif text-2xl text-white mb-3">
             Was bedeutet das für dich persönlich?
           </h3>
-          <p className="text-[rgba(215,230,255,0.45)] mb-6 max-w-md mx-auto text-sm leading-relaxed">
+          <p className="text-[rgba(215,230,255,0.50)] mb-6 max-w-md mx-auto text-sm leading-relaxed">
             Die Wissenschaft beschreibt die Ordnung des Kosmos. Dein Fu-Ring übersetzt sie in persönliche Bedeutung.
           </p>
           <a
@@ -166,7 +177,7 @@ export function ArticlePage({ t, bazodiacUrl }: Props) {
       {/* Related articles */}
       {otherArticles.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 sm:px-8 pb-24">
-          <h3 className="text-[rgba(215,230,255,0.35)] text-xs uppercase tracking-widest mb-6">
+          <h3 className="text-[rgba(215,230,255,0.40)] text-xs uppercase tracking-widest mb-6">
             Weitere Artikel
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -191,7 +202,7 @@ export function ArticlePage({ t, bazodiacUrl }: Props) {
                     <h4 className="text-white text-sm font-medium leading-snug group-hover:text-[#D4AF37] transition-colors line-clamp-2">
                       {a.title}
                     </h4>
-                    <span className="text-[10px] text-[rgba(215,230,255,0.25)] mt-2 block">
+                    <span className="text-[11px] text-[rgba(215,230,255,0.35)] mt-2 block">
                       {a.readingTime} Min. →
                     </span>
                   </div>

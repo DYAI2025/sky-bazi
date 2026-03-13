@@ -8,18 +8,23 @@ interface Props {
   bazodiacUrl: string;
 }
 
-export function ArticlesPage({ t, bazodiacUrl }: Props) {
+export function ArticlesPage({ lang, t, bazodiacUrl }: Props) {
   return (
     <div className="min-h-screen bg-[#020509]">
       {/* Hero */}
       <section className="relative pt-28 pb-16 px-4 sm:px-8 max-w-6xl mx-auto">
-        <p className="text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/60 mb-3">
+        <p className="text-[11px] uppercase tracking-[0.35em] text-[#D4AF37]/70 mb-3">
           Bazodiac Sky · Wissen
         </p>
-        <h1 className="font-serif text-4xl sm:text-5xl text-white mb-4 leading-tight">
-          Der Himmel, erklärt.
+        <h1 className="font-serif text-4xl sm:text-5xl text-white mb-3 leading-tight">
+          {lang === "de" ? "Der Himmel in voller Tiefe." : "The Sky in Full Depth."}
         </h1>
-        <p className="text-[rgba(215,230,255,0.55)] max-w-xl leading-relaxed">
+        <p className="font-serif text-xl sm:text-2xl text-[rgba(215,230,255,0.55)] mb-4 leading-snug">
+          {lang === "de"
+            ? "Einblicke in die größten Geheimnisse des Universums"
+            : "Insights into the greatest mysteries of the universe"}
+        </p>
+        <p className="text-[rgba(215,230,255,0.60)] max-w-xl leading-relaxed">
           Echte Wissenschaft, NASA-Daten und kosmische Rätsel — geschrieben mit echter Faszination.
         </p>
       </section>
@@ -55,7 +60,7 @@ export function ArticlesPage({ t, bazodiacUrl }: Props) {
                       {article.tags.slice(0, 2).map((tag) => (
                         <span
                           key={tag}
-                          className="text-[9px] uppercase tracking-widest text-[#D4AF37]/60 bg-[#D4AF37]/5 border border-[#D4AF37]/15 px-2 py-0.5 rounded-full"
+                          className="text-[10px] uppercase tracking-widest text-[#D4AF37]/70 bg-[#D4AF37]/5 border border-[#D4AF37]/15 px-2 py-0.5 rounded-full"
                         >
                           {tag}
                         </span>
@@ -67,12 +72,12 @@ export function ArticlesPage({ t, bazodiacUrl }: Props) {
                     {article.title}
                   </h2>
 
-                  <p className="text-[rgba(215,230,255,0.45)] text-sm leading-relaxed flex-1 line-clamp-3">
+                  <p className="text-[rgba(215,230,255,0.50)] text-sm leading-relaxed flex-1 line-clamp-3">
                     {article.excerpt}
                   </p>
 
                   <div className="mt-4 flex items-center justify-between">
-                    <span className="text-[10px] text-[rgba(215,230,255,0.25)]">
+                    <span className="text-[11px] text-[rgba(215,230,255,0.35)]">
                       {article.readingTime} Min. Lesezeit
                     </span>
                     <span className="text-[#D4AF37]/70 text-xs group-hover:text-[#D4AF37] transition-colors">
@@ -88,7 +93,7 @@ export function ArticlesPage({ t, bazodiacUrl }: Props) {
 
       {/* Bottom CTA */}
       <section className="border-t border-[rgba(215,230,255,0.07)] py-16 px-4 text-center">
-        <p className="text-[rgba(215,230,255,0.45)] mb-5 max-w-md mx-auto">
+        <p className="text-[rgba(215,230,255,0.50)] mb-5 max-w-md mx-auto">
           Wissenschaft zeigt die Ordnung des Kosmos. Was sie für dich persönlich bedeutet — das entdeckst du mit deinem Fu-Ring.
         </p>
         <a

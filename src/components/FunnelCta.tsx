@@ -20,7 +20,7 @@ export function FunnelCta({ t, bazodiacUrl, variant = "primary" }: FunnelCtaProp
           </h3>
 
           {!isWeather && (
-            <p className="text-sm text-[rgba(215,230,255,0.45)] max-w-xl mx-auto mb-8 leading-relaxed">
+            <p className="text-sm text-[rgba(215,230,255,0.50)] max-w-xl mx-auto mb-8 leading-relaxed">
               {t("funnel.body")}
             </p>
           )}
@@ -29,7 +29,7 @@ export function FunnelCta({ t, bazodiacUrl, variant = "primary" }: FunnelCtaProp
             href={bazodiacUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 text-[11px] uppercase tracking-[0.25em] border border-[#D4AF37]/40 text-[#D4AF37] rounded-lg hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/60 transition-all"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-xs uppercase tracking-[0.25em] border border-[#D4AF37]/40 text-[#D4AF37] rounded-lg hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/60 transition-all"
           >
             {isWeather ? t("funnel.weatherCta") : t("funnel.cta")}
             <ArrowRight className="w-4 h-4" />

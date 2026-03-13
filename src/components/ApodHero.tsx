@@ -72,17 +72,17 @@ export function ApodHero({ t }: ApodHeroProps) {
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-8 pb-12 sm:pb-16 w-full">
-        <p className="text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/60 mb-2">
+        <p className="text-[11px] uppercase tracking-[0.35em] text-[#D4AF37]/70 mb-2">
           {t("apod.title")} &middot; {apod.date}
         </p>
         <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-4 max-w-3xl">
           {apod.title}
         </h1>
-        <p className="text-sm text-[rgba(215,230,255,0.55)] leading-relaxed max-w-2xl line-clamp-3">
+        <p className="text-sm text-[rgba(215,230,255,0.60)] leading-relaxed max-w-2xl line-clamp-3">
           {apod.explanation}
         </p>
         {apod.copyright && (
-          <p className="text-[10px] text-[rgba(215,230,255,0.25)] mt-3">
+          <p className="text-[11px] text-[rgba(215,230,255,0.35)] mt-3">
             &copy; {apod.copyright}
           </p>
         )}

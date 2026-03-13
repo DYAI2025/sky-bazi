@@ -4,7 +4,17 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  server: { port: 3002 },
+  server: {
+    port: 3002,
+    proxy: {
+      // Proxy JPL Sentry API to avoid CORS in dev
+      "/api/sentry": {
+        target: "https://ssd-api.jpl.nasa.gov",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/sentry/, "/sentry.api"),
+      },
+    },
+  },
   preview: { port: 3002 },
   build: {
     rollupOptions: {
