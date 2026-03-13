@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import type { Lang } from "../lib/i18n";
 
 interface HeaderProps {
@@ -9,17 +10,32 @@ interface HeaderProps {
 }
 
 export function Header({ lang, setLang, t, bazodiacUrl }: HeaderProps) {
+  const location = useLocation();
+  const onArticles = location.pathname.startsWith("/artikel");
+
   return (
     <header className="fixed top-0 w-full z-50 backdrop-blur-xl bg-[#030a18]/80 border-b border-[rgba(70,130,220,0.12)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
         {/* Brand */}
-        <div className="flex items-center gap-3">
-          <span className="font-serif text-xl tracking-widest text-[#D4AF37]">
-            Bazodiac
-          </span>
-          <span className="text-[9px] uppercase tracking-[0.3em] text-[rgba(215,230,255,0.30)] font-sans">
-            Sky
-          </span>
+        <div className="flex items-center gap-6">
+          <Link to="/" className="flex items-center gap-3">
+            <span className="font-serif text-xl tracking-widest text-[#D4AF37]">
+              Bazodiac
+            </span>
+            <span className="text-[9px] uppercase tracking-[0.3em] text-[rgba(215,230,255,0.30)] font-sans">
+              Sky
+            </span>
+          </Link>
+          <Link
+            to="/artikel"
+            className={`hidden sm:block text-[9px] uppercase tracking-[0.2em] transition-colors ${
+              onArticles
+                ? "text-[#D4AF37]"
+                : "text-[rgba(215,230,255,0.35)] hover:text-[rgba(215,230,255,0.65)]"
+            }`}
+          >
+            Artikel
+          </Link>
         </div>
 
         <div className="flex items-center gap-4">
