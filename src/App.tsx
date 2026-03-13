@@ -8,6 +8,7 @@ import { FunnelCta } from "./components/FunnelCta";
 import { Footer } from "./components/Footer";
 import { ArticlesPage } from "./pages/ArticlesPage";
 import { ArticlePage } from "./pages/ArticlePage";
+import { ArticleTeaser } from "./components/ArticleTeaser";
 
 const BAZODIAC_URL = import.meta.env.VITE_BAZODIAC_URL || "https://bazodiac.space";
 
@@ -20,6 +21,7 @@ function HomePage({ lang, t }: { lang: "de" | "en"; t: (k: string) => string }) 
       <FunnelCta t={t} bazodiacUrl={BAZODIAC_URL} variant="weather" />
       <PlanetPositions lang={lang} t={t} />
       <FunnelCta t={t} bazodiacUrl={BAZODIAC_URL} />
+      <ArticleTeaser />
     </>
   );
 }
