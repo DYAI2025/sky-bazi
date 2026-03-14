@@ -1,5 +1,5 @@
 ---
-slug: /gannon-sturm-2024
+slug: /gannon-sturm-2024-magnetsturm-zukunft
 title: "The Gannon Storm 2024: What Happened and Why It Matters"
 metaDescription: "A fact-based review of the 2024 Gannon geomagnetic storm, what systems were affected, and what we learned about resilience."
 image: /images/articles/gannon-storm.jpg
