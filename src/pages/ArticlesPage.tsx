@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { articles } from "../lib/parseArticle";
+import { getArticles } from "../lib/parseArticle";
 import type { Lang } from "../lib/i18n";
 
 interface Props {
@@ -9,27 +9,32 @@ interface Props {
 }
 
 export function ArticlesPage({ lang, t, bazodiacUrl }: Props) {
+  const articles = getArticles(lang);
+  const c = {
+    label: "Bazodiac Sky · Wissen",
+    title: lang === "de" ? "Der Himmel in voller Tiefe." : "The Sky in Full Depth.",
+    subtitle: lang === "de"
+      ? "Einblicke in die größten Geheimnisse des Universums"
+      : "Insights into the greatest mysteries of the universe",
+    intro: lang === "de"
+      ? "Echte Wissenschaft, NASA-Daten und kosmische Rätsel — geschrieben mit echter Faszination."
+      : "Real science, NASA data, and cosmic puzzles — written with genuine fascination.",
+    minutes: lang === "de" ? "Min. Lesezeit" : "min read",
+    read: lang === "de" ? "Lesen →" : "Read →",
+    ctaText: lang === "de"
+      ? "Wissenschaft zeigt die Ordnung des Kosmos. Was sie für dich persönlich bedeutet — das entdeckst du mit deinem Fu-Ring."
+      : "Science reveals the order of the cosmos. What it means for you personally — discover it with your Fu Ring.",
+  };
+
   return (
     <div className="min-h-screen bg-[#020509]">
-      {/* Hero */}
       <section className="relative pt-28 pb-16 px-4 sm:px-8 max-w-6xl mx-auto">
-        <p className="text-[11px] uppercase tracking-[0.35em] text-[#D4AF37]/70 mb-3">
-          Bazodiac Sky · Wissen
-        </p>
-        <h1 className="font-serif text-4xl sm:text-5xl text-white mb-3 leading-tight">
-          {lang === "de" ? "Der Himmel in voller Tiefe." : "The Sky in Full Depth."}
-        </h1>
-        <p className="font-serif text-xl sm:text-2xl text-[rgba(215,230,255,0.55)] mb-4 leading-snug">
-          {lang === "de"
-            ? "Einblicke in die größten Geheimnisse des Universums"
-            : "Insights into the greatest mysteries of the universe"}
-        </p>
-        <p className="text-[rgba(215,230,255,0.60)] max-w-xl leading-relaxed">
-          Echte Wissenschaft, NASA-Daten und kosmische Rätsel — geschrieben mit echter Faszination.
-        </p>
+        <p className="text-[11px] uppercase tracking-[0.35em] text-[#D4AF37]/70 mb-3">{c.label}</p>
+        <h1 className="font-serif text-4xl sm:text-5xl text-white mb-3 leading-tight">{c.title}</h1>
+        <p className="font-serif text-xl sm:text-2xl text-[rgba(215,230,255,0.55)] mb-4 leading-snug">{c.subtitle}</p>
+        <p className="text-[rgba(215,230,255,0.60)] max-w-xl leading-relaxed">{c.intro}</p>
       </section>
 
-      {/* Grid */}
       <section className="max-w-6xl mx-auto px-4 sm:px-8 pb-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article) => {
@@ -40,7 +45,6 @@ export function ArticlesPage({ lang, t, bazodiacUrl }: Props) {
                 to={`/artikel/${slug}`}
                 className="group relative bg-[#0a1120] border border-[rgba(215,230,255,0.07)] rounded-xl overflow-hidden hover:border-[#D4AF37]/30 transition-colors duration-300 flex flex-col"
               >
-                {/* Image */}
                 {article.image && (
                   <div className="relative h-44 overflow-hidden bg-[#030a18]">
                     <img
@@ -52,9 +56,7 @@ export function ArticlesPage({ lang, t, bazodiacUrl }: Props) {
                   </div>
                 )}
 
-                {/* Content */}
                 <div className="p-5 flex flex-col flex-1">
-                  {/* Tags */}
                   {article.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       {article.tags.slice(0, 2).map((tag) => (
@@ -77,12 +79,8 @@ export function ArticlesPage({ lang, t, bazodiacUrl }: Props) {
                   </p>
 
                   <div className="mt-4 flex items-center justify-between">
-                    <span className="text-[11px] text-[rgba(215,230,255,0.35)]">
-                      {article.readingTime} Min. Lesezeit
-                    </span>
-                    <span className="text-[#D4AF37]/70 text-xs group-hover:text-[#D4AF37] transition-colors">
-                      Lesen →
-                    </span>
+                    <span className="text-[11px] text-[rgba(215,230,255,0.35)]">{article.readingTime} {c.minutes}</span>
+                    <span className="text-[#D4AF37]/70 text-xs group-hover:text-[#D4AF37] transition-colors">{c.read}</span>
                   </div>
                 </div>
               </Link>
@@ -91,11 +89,8 @@ export function ArticlesPage({ lang, t, bazodiacUrl }: Props) {
         </div>
       </section>
 
-      {/* Bottom CTA */}
       <section className="border-t border-[rgba(215,230,255,0.07)] py-16 px-4 text-center">
-        <p className="text-[rgba(215,230,255,0.50)] mb-5 max-w-md mx-auto">
-          Wissenschaft zeigt die Ordnung des Kosmos. Was sie für dich persönlich bedeutet — das entdeckst du mit deinem Fu-Ring.
-        </p>
+        <p className="text-[rgba(215,230,255,0.50)] mb-5 max-w-md mx-auto">{c.ctaText}</p>
         <a
           href={bazodiacUrl}
           target="_blank"

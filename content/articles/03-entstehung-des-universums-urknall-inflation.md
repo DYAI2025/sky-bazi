@@ -4,6 +4,7 @@ title: "Die Entstehung des Universums: Was wir über Urknall, Inflation und die 
 metaDescription: "Wie entstand das Universum? Eine fundierte Erklärung zu Urknall, kosmischer Inflation, Hintergrundstrahlung, JWST-Funden und den offenen Fragen der modernen Kosmologie."
 image: /images/articles/cmb-planck.jpg
 publishedAt: "2025-01-01"
+lang: de
 readingTime: 11
 tags: ["Urknall", "Kosmologie", "Inflation", "JWST", "Hintergrundstrahlung", "NASA"]
 ---

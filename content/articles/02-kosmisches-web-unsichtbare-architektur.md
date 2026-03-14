@@ -4,6 +4,7 @@ title: "Das Kosmische Web: Die unsichtbare Architektur des Universums"
 metaDescription: "Was ist das Kosmische Web? Wie dunkle Materie Filamente, Voids und Galaxienstrukturen formt – und warum diese unsichtbare Ordnung uns tiefer berührt als jeder leuchtende Stern."
 image: /images/articles/cosmic-web-simulation.jpg
 publishedAt: "2025-01-01"
+lang: de
 readingTime: 10
 tags: ["Kosmisches Web", "Dunkle Materie", "Galaxien", "Kosmologie", "NASA", "JWST"]
 ---

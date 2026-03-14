@@ -1,7 +1,7 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { getArticle, articles } from "../lib/parseArticle";
+import { getArticle, getArticles } from "../lib/parseArticle";
 import type { Lang } from "../lib/i18n";
 import type { Element } from "hast";
 
@@ -11,13 +11,13 @@ interface Props {
   bazodiacUrl: string;
 }
 
-export function ArticlePage({ t, bazodiacUrl }: Props) {
+export function ArticlePage({ lang, t, bazodiacUrl }: Props) {
   const { slug } = useParams<{ slug: string }>();
-  const article = getArticle(slug ?? "");
+  const article = getArticle(slug ?? "", lang);
 
   if (!article) return <Navigate to="/artikel" replace />;
 
-  const otherArticles = articles.filter((a) => a.slug !== article.slug).slice(0, 3);
+  const otherArticles = getArticles(lang).filter((a) => a.slug !== article.slug).slice(0, 3);
 
   return (
     <div className="min-h-screen bg-[#020509]">
@@ -39,7 +39,7 @@ export function ArticlePage({ t, bazodiacUrl }: Props) {
           to="/artikel"
           className="text-[rgba(215,230,255,0.40)] text-xs hover:text-[#D4AF37] transition-colors mb-6 inline-block"
         >
-          ← Alle Artikel
+          {lang === "de" ? "← Alle Artikel" : "← All articles"}
         </Link>
 
         {article.tags.length > 0 && (
@@ -56,7 +56,7 @@ export function ArticlePage({ t, bazodiacUrl }: Props) {
         )}
 
         <div className="flex items-center gap-3 text-[11px] text-[rgba(215,230,255,0.35)] mb-8">
-          <span>{article.readingTime} Min. Lesezeit</span>
+          <span>{article.readingTime} {lang === "de" ? "Min. Lesezeit" : "min read"}</span>
           <span>·</span>
           <span>Bazodiac Sky</span>
         </div>
@@ -158,10 +158,10 @@ export function ArticlePage({ t, bazodiacUrl }: Props) {
             Fu-Ring
           </p>
           <h3 className="font-serif text-2xl text-white mb-3">
-            Was bedeutet das für dich persönlich?
+            {lang === "de" ? "Was bedeutet das für dich persönlich?" : "What does this mean for you personally?"}
           </h3>
           <p className="text-[rgba(215,230,255,0.50)] mb-6 max-w-md mx-auto text-sm leading-relaxed">
-            Die Wissenschaft beschreibt die Ordnung des Kosmos. Dein Fu-Ring übersetzt sie in persönliche Bedeutung.
+            {lang === "de" ? "Die Wissenschaft beschreibt die Ordnung des Kosmos. Dein Fu-Ring übersetzt sie in persönliche Bedeutung." : "Science describes the order of the cosmos. Your Fu Ring translates it into personal meaning."}
           </p>
           <a
             href={bazodiacUrl}
@@ -178,7 +178,7 @@ export function ArticlePage({ t, bazodiacUrl }: Props) {
       {otherArticles.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 sm:px-8 pb-24">
           <h3 className="text-[rgba(215,230,255,0.40)] text-xs uppercase tracking-widest mb-6">
-            Weitere Artikel
+            {lang === "de" ? "Weitere Artikel" : "More articles"}
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {otherArticles.map((a) => {
@@ -203,7 +203,7 @@ export function ArticlePage({ t, bazodiacUrl }: Props) {
                       {a.title}
                     </h4>
                     <span className="text-[11px] text-[rgba(215,230,255,0.35)] mt-2 block">
-                      {a.readingTime} Min. →
+                      {a.readingTime} {lang === "de" ? "Min. →" : "min →"}
                     </span>
                   </div>
                 </Link>
