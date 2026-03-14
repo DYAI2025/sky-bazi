@@ -1,5 +1,5 @@
 ---
-slug: /weltraumwetter-sonnensturm-magnetsturm
+slug: /weltraumwetter-sonnensturm-magnetsturm-alltag
 title: "Space Weather Explained: Solar Storms, Geomagnetic Storms, and Real-World Effects"
 metaDescription: "What space weather means in practice: solar flares, coronal mass ejections, geomagnetic storms, and their impact on satellites, power grids, and communication."
 image: /images/articles/solar-flare.jpg
