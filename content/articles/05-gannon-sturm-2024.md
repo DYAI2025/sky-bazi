@@ -4,6 +4,7 @@ title: "Der Gannon-Sturm 2024: Was der stärkste Sonnensturm seit 20 Jahren übe
 metaDescription: "Der Gannon-Sturm im Mai 2024 war der stärkste geomagnetische Sturm seit 2003. Was mit GPS, Satelliten und Infrastruktur passierte – und was uns das für die Zukunft lehrt."
 image: /images/articles/aurora-storm.jpg
 publishedAt: "2025-01-01"
+lang: de
 readingTime: 8
 tags: ["Gannon-Sturm", "Sonnensturm 2024", "Geomagnetischer Sturm", "NASA", "NOAA", "Weltraumwetter"]
 ---

@@ -1,3 +1,5 @@
+import type { Lang } from "./i18n";
+
 export interface ArticleMeta {
   slug: string;
   title: string;
@@ -6,6 +8,7 @@ export interface ArticleMeta {
   publishedAt: string;
   readingTime: number;
   tags: string[];
+  lang: Lang;
 }
 
 export interface Article extends ArticleMeta {
@@ -28,14 +31,16 @@ function parseFrontmatter(raw: string): { meta: Partial<ArticleMeta>; content: s
     const key = line.slice(0, colonIdx).trim();
     const value = line.slice(colonIdx + 1).trim();
 
-    if (key === "tags") continue; // handled separately
-    if (key === "readingTime") { meta.readingTime = parseInt(value); continue; }
+    if (key === "tags") continue;
+    if (key === "readingTime") {
+      meta.readingTime = parseInt(value, 10);
+      continue;
+    }
 
     const clean = value.replace(/^["']|["']$/g, "");
     (meta as Record<string, string | number>)[key] = clean;
   }
 
-  // Parse tags array
   const tagsMatch = yamlBlock.match(/tags:\s*\[(.*?)\]/s);
   if (tagsMatch) {
     meta.tags = tagsMatch[1].split(",").map((t) => t.trim().replace(/^["']|["']$/g, ""));
@@ -44,20 +49,20 @@ function parseFrontmatter(raw: string): { meta: Partial<ArticleMeta>; content: s
   return { meta, content };
 }
 
-// Import all articles as raw strings
 const rawFiles = import.meta.glob("../../content/articles/*.md", {
   query: "?raw",
   import: "default",
   eager: true,
 }) as Record<string, string>;
 
-export const articles: Article[] = Object.entries(rawFiles)
+const allArticles: Article[] = Object.entries(rawFiles)
   .map(([, raw]) => {
     const { meta, content } = parseFrontmatter(raw);
     const firstPara = content
       .split("\n")
       .find((l) => l.trim() && !l.startsWith("#") && !l.startsWith("!") && !l.startsWith("---"))
       ?.slice(0, 220) ?? "";
+
     return {
       slug: meta.slug ?? "/",
       title: meta.title ?? "",
@@ -66,12 +71,21 @@ export const articles: Article[] = Object.entries(rawFiles)
       publishedAt: meta.publishedAt ?? "",
       readingTime: meta.readingTime ?? 8,
       tags: meta.tags ?? [],
+      lang: meta.lang ?? "de",
       content,
       excerpt: firstPara.replace(/\*\*/g, "").replace(/\*/g, "") + "…",
     } satisfies Article;
   })
   .sort((a, b) => a.slug.localeCompare(b.slug));
 
-export function getArticle(slug: string): Article | undefined {
-  return articles.find((a) => a.slug === `/${slug}`);
+export function getArticles(lang: Lang): Article[] {
+  const localized = allArticles.filter((a) => a.lang === lang);
+  if (localized.length > 0) return localized;
+  return allArticles.filter((a) => a.lang === "de");
+}
+
+export function getArticle(slug: string, lang: Lang): Article | undefined {
+  const normalized = `/${slug}`;
+  return allArticles.find((a) => a.slug === normalized && a.lang === lang)
+    ?? allArticles.find((a) => a.slug === normalized && a.lang === "de");
 }

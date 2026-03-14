@@ -4,6 +4,7 @@ title: "Beeinflusst Weltraumwetter den Menschen? Was die Forschung über Schlaf,
 metaDescription: "Hat Weltraumwetter Einfluss auf den menschlichen Körper? Was Studien zu Magnetorezeption, biologischen Rhythmen und kosmischer Strahlung wirklich zeigen – ohne Übertreibung."
 image: /images/articles/sun-sdo.jpg
 publishedAt: "2025-01-01"
+lang: de
 readingTime: 10
 tags: ["Weltraumwetter", "Magnetorezeption", "Biologie", "NASA", "Sonnensturm", "Mensch"]
 ---

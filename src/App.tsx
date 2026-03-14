@@ -27,7 +27,7 @@ function HomePage({ lang, t }: { lang: "de" | "en"; t: (k: string) => string }) 
       <ImpactRisks lang={lang} />
       <PlanetPositions lang={lang} t={t} />
       <FunnelCta t={t} bazodiacUrl={BAZODIAC_URL} />
-      <ArticleTeaser />
+      <ArticleTeaser lang={lang} />
     </>
   );
 }

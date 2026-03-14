@@ -4,6 +4,7 @@ title: "5 kosmische Rätsel, die unser Verständnis des Universums gerade jetzt 
 metaDescription: "Hubble-Spannung, frühe JWST-Galaxien, Wow!-Signal, kosmische Leerräume und Vakuumzerfall: 5 große Rätsel, die zeigen, wie wenig wir über das Universum wirklich wissen."
 image: /images/articles/jwst-deep-field.jpg
 publishedAt: "2025-01-01"
+lang: de
 readingTime: 9
 tags: ["Kosmologie", "NASA", "JWST", "Hubble", "Astronomie", "Vakuumzerfall"]
 ---

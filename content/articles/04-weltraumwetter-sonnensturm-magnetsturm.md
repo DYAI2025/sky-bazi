@@ -4,6 +4,7 @@ title: "Weltraumwetter: Wie Sonnenstürme, Magnetstürme und Sonnenwind unseren 
 metaDescription: "Was ist Weltraumwetter? Wie Sonnenstürme, koronale Massenauswürfe und geomagnetische Stürme GPS, Satelliten und elektrische Infrastruktur beeinflussen – wissenschaftlich erklärt."
 image: /images/articles/sun-sdo.jpg
 publishedAt: "2025-01-01"
+lang: de
 readingTime: 9
 tags: ["Weltraumwetter", "Sonnensturm", "Magnetfeld", "NASA", "NOAA", "Solarer Flare"]
 ---

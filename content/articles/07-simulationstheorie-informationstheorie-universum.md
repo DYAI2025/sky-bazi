@@ -4,6 +4,7 @@ title: "Simulationstheorie und Informationstheorie: Leben wir in einem programmi
 metaDescription: "Was ist die Simulationstheorie wirklich – und was hat Informationstheorie damit zu tun? Eine wissenschaftlich saubere Einordnung von Bostrom bis Shannon, ohne Mystik."
 image: /images/articles/universe-bw.png
 publishedAt: "2025-01-01"
+lang: de
 readingTime: 10
 tags: ["Simulationstheorie", "Informationstheorie", "Bostrom", "Shannon", "Kosmologie", "Philosophie"]
 ---
