@@ -1,5 +1,5 @@
 ---
-slug: /weltraumwetter-mensch-forschung
+slug: /weltraumwetter-mensch-forschung-schlaf-stimmung
 title: "Does Space Weather Affect Humans? What Research Really Says"
 metaDescription: "A balanced overview of research on possible human effects of space weather, from astronaut exposure to mixed evidence on Earth."
 image: /images/articles/sun-sdo.jpg
