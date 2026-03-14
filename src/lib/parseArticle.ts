@@ -85,6 +85,14 @@ export function getArticles(lang: Lang): Article[] {
 }
 
 export function getArticle(slug: string, lang: Lang): Article | undefined {
+  const normalized = slug.startsWith('/') ? slug : `/${slug}`;
+  return (
+    allArticles.find((a) => a.slug === normalized && a.lang === lang) ??
+    allArticles.find((a) => a.slug === normalized && a.lang === "de")
+  );
+}
+
+export function getArticle(slug: string, lang: Lang): Article | undefined {
   const normalized = `/${slug}`;
   return allArticles.find((a) => a.slug === normalized && a.lang === lang)
     ?? allArticles.find((a) => a.slug === normalized && a.lang === "de");
