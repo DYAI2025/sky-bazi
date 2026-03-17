@@ -155,13 +155,13 @@ export function ArticlePage({ lang, t, bazodiacUrl }: Props) {
       <section className="max-w-3xl mx-auto px-4 sm:px-8 mb-16">
         <div className="bg-[#0a1120] border border-[#D4AF37]/20 rounded-2xl p-8 text-center">
           <p className="text-[11px] uppercase tracking-[0.35em] text-[#D4AF37]/70 mb-3">
-            Fu-Ring
+            Fu-Signatur
           </p>
           <h3 className="font-serif text-2xl text-white mb-3">
             {lang === "de" ? "Was bedeutet das für dich persönlich?" : "What does this mean for you personally?"}
           </h3>
           <p className="text-[rgba(215,230,255,0.50)] mb-6 max-w-md mx-auto text-sm leading-relaxed">
-            {lang === "de" ? "Die Wissenschaft beschreibt die Ordnung des Kosmos. Dein Fu-Ring übersetzt sie in persönliche Bedeutung." : "Science describes the order of the cosmos. Your Fu Ring translates it into personal meaning."}
+            {lang === "de" ? "Die Wissenschaft beschreibt die Ordnung des Kosmos. Deine Fu-Signatur übersetzt sie in persönliche Bedeutung." : "Science describes the order of the cosmos. Your Fu Signature translates it into personal meaning."}
           </p>
           <a
             href={bazodiacUrl}

@@ -3,9 +3,9 @@ import { useState, useCallback } from "react";
 export type Lang = "de" | "en";
 
 const translations = {
-  "site.title": { de: "Der Himmel ueber deinem Ring", en: "The Sky Above Your Ring" },
+  "site.title": { de: "Der Himmel ueber deiner Signatur", en: "The Sky Above Your Signature" },
   "site.brand": { de: "Bazodiac Sky", en: "Bazodiac Sky" },
-  "nav.ring": { de: "Dein Ring", en: "Your Ring" },
+  "nav.ring": { de: "Deine Signatur", en: "Your Signature" },
 
   "apod.title": { de: "Bild des Tages", en: "Picture of the Day" },
   "apod.credit": { de: "Quelle: NASA APOD", en: "Source: NASA APOD" },
@@ -31,11 +31,11 @@ const translations = {
   "planets.retrograde": { de: "Ruecklaeufig", en: "Retrograde" },
   "planets.sign": { de: "Zeichen", en: "Sign" },
 
-  "funnel.headline": { de: "Was bedeutet das fuer DEINEN Ring?", en: "What does this mean for YOUR Ring?" },
-  "funnel.body": { de: "Die Planeten stehen fuer alle gleich am Himmel. Aber was sie fuer DICH bedeuten, haengt von deinem persoenlichen Ring ab.", en: "The planets are in the same position for everyone. But what they mean for YOU depends on your personal Ring." },
-  "funnel.cta": { de: "Ring erstellen", en: "Create Ring" },
-  "funnel.weather": { de: "Sonnenstuerme beeinflussen dein Energiefeld. Wie stark du reagierst, haengt von deinem Ring ab.", en: "Solar storms affect your energy field. How strongly you react depends on your Ring." },
-  "funnel.weatherCta": { de: "Dein Ring-Wetter entdecken", en: "Discover your Ring weather" },
+  "funnel.headline": { de: "Was bedeutet das fuer DEINE Signatur?", en: "What does this mean for YOUR Signature?" },
+  "funnel.body": { de: "Die Planeten stehen fuer alle gleich am Himmel. Aber was sie fuer DICH bedeuten, haengt von deiner persoenlichen Signatur ab.", en: "The planets are in the same position for everyone. But what they mean for YOU depends on your personal Signature." },
+  "funnel.cta": { de: "Signatur erstellen", en: "Create Signature" },
+  "funnel.weather": { de: "Sonnenstuerme beeinflussen dein Energiefeld. Wie stark du reagierst, haengt von deiner Signatur ab.", en: "Solar storms affect your energy field. How strongly you react depends on your Signature." },
+  "funnel.weatherCta": { de: "Dein Signatur-Wetter entdecken", en: "Discover your Signature weather" },
 
   "nav.earth": { de: "Erde", en: "Earth" },
   "nav.mars":  { de: "Mars-Rover", en: "Mars Rover" },

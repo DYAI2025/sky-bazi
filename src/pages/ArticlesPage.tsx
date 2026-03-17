@@ -22,8 +22,8 @@ export function ArticlesPage({ lang, t, bazodiacUrl }: Props) {
     minutes: lang === "de" ? "Min. Lesezeit" : "min read",
     read: lang === "de" ? "Lesen →" : "Read →",
     ctaText: lang === "de"
-      ? "Wissenschaft zeigt die Ordnung des Kosmos. Was sie für dich persönlich bedeutet — das entdeckst du mit deinem Fu-Ring."
-      : "Science reveals the order of the cosmos. What it means for you personally — discover it with your Fu Ring.",
+      ? "Wissenschaft zeigt die Ordnung des Kosmos. Was sie für dich persönlich bedeutet — das entdeckst du mit deiner Fu-Signatur."
+      : "Science reveals the order of the cosmos. What it means for you personally — discover it with your Fu Signature.",
   };
 
   return (
