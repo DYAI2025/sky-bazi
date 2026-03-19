@@ -1,11 +1,14 @@
+import { Link } from "react-router-dom";
 import { IS_DEMO_KEY } from "../services/nasa";
+import type { Lang } from "../lib/i18n";
 
 interface FooterProps {
   t: (key: string) => string;
   bazodiacUrl: string;
+  lang: Lang;
 }
 
-export function Footer({ t, bazodiacUrl }: FooterProps) {
+export function Footer({ t, bazodiacUrl, lang }: FooterProps) {
   return (
     <footer className="border-t border-[rgba(70,130,220,0.08)] mt-16">
       {IS_DEMO_KEY && (
@@ -24,25 +27,39 @@ export function Footer({ t, bazodiacUrl }: FooterProps) {
           </p>
         </div>
       )}
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-[11px] text-[rgba(215,230,255,0.35)] tracking-wider">
-          <span>{t("footer.data")}</span>
-          <span className="hidden sm:inline">&middot;</span>
-          <span>{t("footer.calc")}</span>
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 py-10 flex flex-col gap-6">
+        {/* Top row: data credits + brand */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-[11px] text-[rgba(215,230,255,0.35)] tracking-wider">
+            <span>{t("footer.data")}</span>
+            <span className="hidden sm:inline">&middot;</span>
+            <span>{t("footer.calc")}</span>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <a
+              href={bazodiacUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[11px] tracking-[0.2em] uppercase text-[#D4AF37]/50 hover:text-[#D4AF37]/80 transition-colors"
+            >
+              {t("footer.main")}
+            </a>
+            <span className="font-serif text-sm tracking-widest text-[#D4AF37]/30">
+              Bazodiac
+            </span>
+          </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          <a
-            href={bazodiacUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[11px] tracking-[0.2em] uppercase text-[#D4AF37]/50 hover:text-[#D4AF37]/80 transition-colors"
-          >
-            {t("footer.main")}
-          </a>
-          <span className="font-serif text-sm tracking-widest text-[#D4AF37]/30">
-            Bazodiac
-          </span>
+        {/* Bottom row: legal links */}
+        <div className="flex items-center justify-center gap-4 sm:gap-6 text-[11px] text-[rgba(215,230,255,0.30)] tracking-wider">
+          <Link to="/impressum" className="hover:text-[rgba(215,230,255,0.60)] transition-colors">
+            Impressum
+          </Link>
+          <span>&middot;</span>
+          <Link to="/datenschutz" className="hover:text-[rgba(215,230,255,0.60)] transition-colors">
+            {lang === "de" ? "Datenschutz" : "Privacy"}
+          </Link>
         </div>
       </div>
     </footer>

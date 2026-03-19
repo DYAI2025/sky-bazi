@@ -3,14 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Echte NASA-Daten, echte Planetenpositionen, echtes Weltraumwetter. Der Himmel ueber deinem Ring." />
-    <title>Bazodiac Sky — Der Himmel ueber deinem Ring</title>
+    <meta name="description" content="Echte NASA-Daten, echte Planetenpositionen, echtes Weltraumwetter. Der Himmel ueber deiner Signatur." />
+    <title>Bazodiac Sky — Der Himmel ueber deiner Signatur</title>
+
+    <!-- Canonical & OpenGraph -->
+    <link rel="canonical" href="https://sky.bazodiac.space/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sky.bazodiac.space/" />
+    <meta property="og:title" content="Bazodiac Sky — Der Himmel ueber deiner Signatur" />
+    <meta property="og:description" content="Echte NASA-Daten, echte Planetenpositionen, echtes Weltraumwetter." />
+    <meta property="og:image" content="https://sky.bazodiac.space/images/og-sky.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+    <!-- Google Consent Mode v2 — default denied until user consents -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500
+      });
+    </script>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Sora:wght@100;300;400;600&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>
+
+    <noscript>
+      <div style="max-width:640px;margin:80px auto;padding:24px;color:#d7e6ff;font-family:sans-serif;">
+        <h1 style="color:#D4AF37;font-size:24px;margin-bottom:16px;">Bazodiac Sky</h1>
+        <p>Bazodiac Sky zeigt echte astronomische Daten in Echtzeit: das NASA-Bild des Tages, Weltraumwetter mit Sonnenstuerme und geomagnetischen Indizes, erdnahe Asteroiden, Einschlagsrisiken (JPL Sentry), aktuelle Planetenpositionen berechnet mit der Astronomy Engine, Live-Bilder der Erde vom DSCOVR-Satelliten und aktuelle Fotos des Mars-Rovers Curiosity. Alle Daten stammen von offiziellen NASA Open APIs. Bitte aktivieren Sie JavaScript, um die interaktive Ansicht zu nutzen.</p>
+      </div>
+    </noscript>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
