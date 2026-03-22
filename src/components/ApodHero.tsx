@@ -40,11 +40,25 @@ export function ApodHero({ t }: ApodHeroProps) {
   }
 
   const isVideo = apod.media_type === "video";
+  const isNativeVideo = isVideo && /\.(mp4|webm|ogg)(\?|$)/i.test(apod.url);
 
   return (
     <section className="relative w-full h-[70vh] min-h-[500px] flex items-end overflow-hidden">
       {/* Background */}
-      {isVideo ? (
+      {isNativeVideo ? (
+        <div className="absolute inset-0 bg-[#020509]">
+          <video
+            src={apod.url}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+            onLoadedData={() => setImgLoaded(true)}
+          />
+          {!imgLoaded && <div className="absolute inset-0 sky-skeleton" />}
+        </div>
+      ) : isVideo ? (
         <div className="absolute inset-0 flex items-center justify-center bg-[#020509]">
           <iframe
             src={apod.url}
