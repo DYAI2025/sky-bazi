@@ -5,6 +5,7 @@ metaDescription: "A scientific and philosophical guide to simulation theory and 
 image: /images/articles/universe-bw.png
 publishedAt: "2025-01-01"
 lang: en
+category: universum
 readingTime: 10
 tags: ["Simulation Theory", "Information Theory", "Bostrom", "Shannon", "Cosmology", "Philosophy"]
 ---

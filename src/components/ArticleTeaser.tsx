@@ -1,21 +1,21 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { getArticles } from "../lib/parseArticle";
+import { getArticlesByCategory } from "../lib/parseArticle";
 import type { Lang } from "../lib/i18n";
-
-const FEATURED = [0, 1];
 
 interface Props {
   lang: Lang;
+  t: (key: string) => string;
 }
 
-export function ArticleTeaser({ lang }: Props) {
-  const articles = getArticles(lang);
-  const featured = FEATURED.map((i) => articles[i]).filter(Boolean);
+export function ArticleTeaser({ lang, t }: Props) {
+  const universumArticles = getArticlesByCategory(lang, "universum");
+  const menschArticles = getArticlesByCategory(lang, "mensch");
+
+  const featured = [universumArticles[0], menschArticles[0]].filter(Boolean);
   if (featured.length === 0) return null;
 
   const c = {
-    label: lang === "de" ? "Wissen · Astronomie" : "Knowledge · Astronomy",
     title: lang === "de" ? "Der Kosmos hat Antworten." : "The cosmos has answers.",
     subtitle: lang === "de" ? "Und noch mehr Fragen." : "And even more questions.",
     all: lang === "de" ? "Alle Artikel" : "All articles",
@@ -28,7 +28,9 @@ export function ArticleTeaser({ lang }: Props) {
     <section className="max-w-6xl mx-auto px-4 sm:px-8 py-16 sm:py-20">
       <div className="flex items-end justify-between mb-8">
         <div>
-          <p className="text-[11px] uppercase tracking-[0.35em] text-[#D4AF37]/70 mb-2">{c.label}</p>
+          <p className="text-[11px] uppercase tracking-[0.35em] text-[#D4AF37]/70 mb-2">
+            {t("nav.wissen")}
+          </p>
           <h2 className="font-serif text-2xl sm:text-3xl text-white leading-tight">
             {c.title}<br />
             <span className="text-[rgba(215,230,255,0.45)]">{c.subtitle}</span>
@@ -63,7 +65,10 @@ export function ArticleTeaser({ lang }: Props) {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120] via-[#0a1120]/40 to-transparent" />
 
                 <div className="absolute top-4 left-4 flex gap-2">
-                  {article.tags.slice(0, 2).map((tag) => (
+                  <span className="text-[10px] uppercase tracking-widest text-[#D4AF37]/80 bg-[#020509]/70 backdrop-blur-sm border border-[#D4AF37]/20 px-2 py-0.5 rounded-full">
+                    {t(`wissen.${article.category}`)}
+                  </span>
+                  {article.tags.slice(0, 1).map((tag) => (
                     <span
                       key={tag}
                       className="text-[10px] uppercase tracking-widest text-[#D4AF37]/80 bg-[#020509]/70 backdrop-blur-sm border border-[#D4AF37]/20 px-2 py-0.5 rounded-full"

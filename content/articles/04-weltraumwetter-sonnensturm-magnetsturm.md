@@ -5,6 +5,7 @@ metaDescription: "Was ist Weltraumwetter? Wie Sonnenstürme, koronale Massenausw
 image: /images/articles/sun-sdo.jpg
 publishedAt: "2025-01-01"
 lang: de
+category: universum
 readingTime: 9
 tags: ["Weltraumwetter", "Sonnensturm", "Magnetfeld", "NASA", "NOAA", "Solarer Flare"]
 ---

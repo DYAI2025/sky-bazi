@@ -5,6 +5,7 @@ metaDescription: "Hubble-Spannung, frühe JWST-Galaxien, Wow!-Signal, kosmische 
 image: /images/articles/jwst-deep-field.jpg
 publishedAt: "2025-01-01"
 lang: de
+category: universum
 readingTime: 9
 tags: ["Kosmologie", "NASA", "JWST", "Hubble", "Astronomie", "Vakuumzerfall"]
 ---

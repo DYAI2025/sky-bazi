@@ -5,6 +5,7 @@ metaDescription: "Hat Weltraumwetter Einfluss auf den menschlichen Körper? Was 
 image: /images/articles/sun-sdo.jpg
 publishedAt: "2025-01-01"
 lang: de
+category: universum
 readingTime: 10
 tags: ["Weltraumwetter", "Magnetorezeption", "Biologie", "NASA", "Sonnensturm", "Mensch"]
 ---

@@ -462,3 +462,65 @@ export function classifyGeoActivity(storms: GeoStorm[]): { level: SolarActivityL
   if (maxKp >= 4) return { level: "active", maxKp };
   return { level: "quiet", maxKp };
 }
+
+// ── NOAA SWPC — Live Solar Data ──────────────────────────────────────────
+
+const NOAA_BASE = "https://services.swpc.noaa.gov";
+
+export interface NoaaLiveData {
+  kp: number;
+  xrayFlux: number;
+  xrayClass: string;
+  protonFlux: number;
+  fetchedAt: number;
+}
+
+const NOAA_CACHE_KEY = "noaa_live_v1";
+const NOAA_TTL = 5 * 60 * 1000; // 5 minutes
+
+export async function fetchNoaaLive(): Promise<NoaaLiveData> {
+  return fetchOnce(NOAA_CACHE_KEY, async () => {
+    const cached = getCached<NoaaLiveData>(NOAA_CACHE_KEY, NOAA_TTL);
+    if (cached) return cached;
+
+    const [kpRes, xrayRes, protonRes] = await Promise.allSettled([
+      fetch(`${NOAA_BASE}/json/planetary_k_index_1m.json`),
+      fetch(`${NOAA_BASE}/json/goes_xray_flux.json`),
+      fetch(`${NOAA_BASE}/json/goes_proton_flux.json`),
+    ]);
+
+    let kp = 0;
+    if (kpRes.status === "fulfilled" && kpRes.value.ok) {
+      const data = await kpRes.value.json();
+      if (Array.isArray(data) && data.length > 0) {
+        const filtered = data.filter((r: Record<string, unknown>) => !r.estimated);
+        const latest = (filtered.length > 0 ? filtered[filtered.length - 1] : data[data.length - 1]);
+        kp = Math.max(0, Math.min(9, Number.parseFloat(String(latest?.kp ?? 0)) || 0));
+      }
+    }
+
+    let xrayFlux = 0, xrayClass = "A";
+    if (xrayRes.status === "fulfilled" && xrayRes.value.ok) {
+      const data = await xrayRes.value.json();
+      if (Array.isArray(data) && data.length > 0) {
+        xrayFlux = Number.parseFloat(String(data[data.length - 1]?.flux ?? 0)) || 0;
+        if (xrayFlux >= 1e-4) xrayClass = "X";
+        else if (xrayFlux >= 1e-5) xrayClass = "M";
+        else if (xrayFlux >= 1e-6) xrayClass = "C";
+        else if (xrayFlux >= 1e-7) xrayClass = "B";
+      }
+    }
+
+    let protonFlux = 0;
+    if (protonRes.status === "fulfilled" && protonRes.value.ok) {
+      const data = await protonRes.value.json();
+      if (Array.isArray(data) && data.length > 0) {
+        protonFlux = Number.parseFloat(String(data[data.length - 1]?.flux ?? 0)) || 0;
+      }
+    }
+
+    const result: NoaaLiveData = { kp, xrayFlux, xrayClass, protonFlux, fetchedAt: Date.now() };
+    setCache(NOAA_CACHE_KEY, result);
+    return result;
+  });
+}

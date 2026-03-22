@@ -5,6 +5,7 @@ metaDescription: "A clear overview of the origin of the universe: Big Bang theor
 image: /images/articles/big-bang-timeline.jpg
 publishedAt: "2025-01-01"
 lang: en
+category: universum
 readingTime: 10
 tags: ["Big Bang", "Inflation", "Cosmology", "CMB", "NASA", "Physics"]
 ---

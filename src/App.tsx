@@ -16,6 +16,7 @@ import { MarsRoverPage } from "./pages/MarsRoverPage";
 import { ImpressumPage } from "./pages/ImpressumPage";
 import { DatenschutzPage } from "./pages/DatenschutzPage";
 import { CookieConsent } from "./components/CookieConsent";
+import SolarPressureWidget from "./components/SolarPressureWidget";
 
 const BAZODIAC_URL = import.meta.env.VITE_BAZODIAC_URL || "https://bazodiac.space";
 
@@ -24,13 +25,14 @@ function HomePage({ lang, t }: { lang: "de" | "en"; t: (k: string) => string }) 
     <>
       <ApodHero t={t} />
       <FunnelCta t={t} bazodiacUrl={BAZODIAC_URL} />
+      <SolarPressureWidget t={t} lang={lang} />
       <SpaceWeather t={t} lang={lang} />
       <FunnelCta t={t} bazodiacUrl={BAZODIAC_URL} variant="weather" />
       <NearEarthObjects lang={lang} />
       <ImpactRisks lang={lang} />
       <PlanetPositions lang={lang} t={t} />
       <FunnelCta t={t} bazodiacUrl={BAZODIAC_URL} />
-      <ArticleTeaser lang={lang} />
+      <ArticleTeaser lang={lang} t={t} />
     </>
   );
 }

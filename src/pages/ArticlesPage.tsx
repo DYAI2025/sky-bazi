@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { getArticles } from "../lib/parseArticle";
+import { getArticlesByCategory } from "../lib/parseArticle";
 import type { Lang } from "../lib/i18n";
 
 interface Props {
@@ -8,17 +9,14 @@ interface Props {
   bazodiacUrl: string;
 }
 
+const CATEGORIES = ["universum", "mensch"] as const;
+
 export function ArticlesPage({ lang, t, bazodiacUrl }: Props) {
-  const articles = getArticles(lang);
+  const [activeCategory, setActiveCategory] = useState<string>("universum");
+  const articles = getArticlesByCategory(lang, activeCategory);
+
   const c = {
     label: "Bazodiac Sky · Wissen",
-    title: lang === "de" ? "Der Himmel in voller Tiefe." : "The Sky in Full Depth.",
-    subtitle: lang === "de"
-      ? "Einblicke in die größten Geheimnisse des Universums"
-      : "Insights into the greatest mysteries of the universe",
-    intro: lang === "de"
-      ? "Echte Wissenschaft, NASA-Daten und kosmische Rätsel — geschrieben mit echter Faszination."
-      : "Real science, NASA data, and cosmic puzzles — written with genuine fascination.",
     minutes: lang === "de" ? "Min. Lesezeit" : "min read",
     read: lang === "de" ? "Lesen →" : "Read →",
     ctaText: lang === "de"
@@ -28,11 +26,39 @@ export function ArticlesPage({ lang, t, bazodiacUrl }: Props) {
 
   return (
     <div className="min-h-screen bg-[#020509]">
-      <section className="relative pt-28 pb-16 px-4 sm:px-8 max-w-6xl mx-auto">
+      <section className="relative pt-28 pb-10 px-4 sm:px-8 max-w-6xl mx-auto">
         <p className="text-[11px] uppercase tracking-[0.35em] text-[#D4AF37]/70 mb-3">{c.label}</p>
-        <h1 className="font-serif text-4xl sm:text-5xl text-white mb-3 leading-tight">{c.title}</h1>
-        <p className="font-serif text-xl sm:text-2xl text-[rgba(215,230,255,0.55)] mb-4 leading-snug">{c.subtitle}</p>
-        <p className="text-[rgba(215,230,255,0.60)] max-w-xl leading-relaxed">{c.intro}</p>
+        <h1 className="font-serif text-4xl sm:text-5xl text-white mb-3 leading-tight">
+          {t(`wissen.${activeCategory}`)}
+        </h1>
+        <p className="font-serif text-xl sm:text-2xl text-[rgba(215,230,255,0.55)] mb-8 leading-snug">
+          {t(`wissen.${activeCategory}.sub`)}
+        </p>
+
+        {/* Category tabs */}
+        <div className="flex gap-3">
+          {CATEGORIES.map((cat) => {
+            const isActive = cat === activeCategory;
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`flex flex-col items-start px-5 py-3 rounded-xl border transition-all duration-200 ${
+                  isActive
+                    ? "border-[#D4AF37]/40 bg-[#D4AF37]/8 text-[#D4AF37]"
+                    : "border-[rgba(215,230,255,0.08)] bg-[rgba(255,255,255,0.02)] text-[rgba(215,230,255,0.45)] hover:border-[rgba(215,230,255,0.15)] hover:text-[rgba(215,230,255,0.65)]"
+                }`}
+              >
+                <span className="text-sm font-medium tracking-wide">
+                  {t(`wissen.${cat}`)}
+                </span>
+                <span className={`text-[10px] mt-0.5 ${isActive ? "text-[#D4AF37]/60" : "text-[rgba(215,230,255,0.30)]"}`}>
+                  {t(`wissen.${cat}.sub`)}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </section>
 
       <section className="max-w-6xl mx-auto px-4 sm:px-8 pb-24">

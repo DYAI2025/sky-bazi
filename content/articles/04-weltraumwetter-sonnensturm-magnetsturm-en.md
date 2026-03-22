@@ -5,6 +5,7 @@ metaDescription: "What space weather means in practice: solar flares, coronal ma
 image: /images/articles/solar-flare.jpg
 publishedAt: "2025-01-01"
 lang: en
+category: universum
 readingTime: 8
 tags: ["Space Weather", "Solar Storm", "Geomagnetic Storm", "NASA", "Sun"]
 ---

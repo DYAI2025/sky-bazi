@@ -5,6 +5,7 @@ metaDescription: "A fact-based review of the 2024 Gannon geomagnetic storm, what
 image: /images/articles/gannon-storm.jpg
 publishedAt: "2025-01-01"
 lang: en
+category: universum
 readingTime: 7
 tags: ["Gannon Storm", "Geomagnetic Storm", "Space Weather", "Infrastructure", "NASA"]
 ---

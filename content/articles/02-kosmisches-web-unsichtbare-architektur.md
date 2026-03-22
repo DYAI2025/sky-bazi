@@ -5,6 +5,7 @@ metaDescription: "Was ist das Kosmische Web? Wie dunkle Materie Filamente, Voids
 image: /images/articles/cosmic-web-simulation.jpg
 publishedAt: "2025-01-01"
 lang: de
+category: universum
 readingTime: 10
 tags: ["Kosmisches Web", "Dunkle Materie", "Galaxien", "Kosmologie", "NASA", "JWST"]
 ---

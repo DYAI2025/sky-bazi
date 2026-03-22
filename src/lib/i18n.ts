@@ -37,8 +37,14 @@ const translations = {
   "funnel.weather": { de: "Sonnenstuerme beeinflussen dein Energiefeld. Wie stark du reagierst, haengt von deiner Signatur ab.", en: "Solar storms affect your energy field. How strongly you react depends on your Signature." },
   "funnel.weatherCta": { de: "Dein Signatur-Wetter entdecken", en: "Discover your Signature weather" },
 
+  "nav.wissen": { de: "Wissen", en: "Knowledge" },
   "nav.earth": { de: "Erde", en: "Earth" },
   "nav.mars":  { de: "Mars-Rover", en: "Mars Rover" },
+
+  "wissen.universum": { de: "Universum", en: "Universe" },
+  "wissen.universum.sub": { de: "Der Himmel in voller Tiefe", en: "The sky in full depth" },
+  "wissen.mensch": { de: "Mensch", en: "Human" },
+  "wissen.mensch.sub": { de: "Was der Kosmos in uns bewegt", en: "What the cosmos moves within us" },
 
   "earth.title":      { de: "Unsere Heimat", en: "Our Home" },
   "earth.subtitle":   { de: "Live-Ansicht — NASA EPIC (DSCOVR-Satellit)", en: "Live view — NASA EPIC (DSCOVR satellite)" },

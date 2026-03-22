@@ -5,6 +5,7 @@ metaDescription: "Der Gannon-Sturm im Mai 2024 war der stärkste geomagnetische 
 image: /images/articles/aurora-storm.jpg
 publishedAt: "2025-01-01"
 lang: de
+category: universum
 readingTime: 8
 tags: ["Gannon-Sturm", "Sonnensturm 2024", "Geomagnetischer Sturm", "NASA", "NOAA", "Weltraumwetter"]
 ---

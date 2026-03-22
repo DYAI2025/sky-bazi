@@ -5,6 +5,7 @@ metaDescription: "Was ist die Simulationstheorie wirklich – und was hat Inform
 image: /images/articles/universe-bw.png
 publishedAt: "2025-01-01"
 lang: de
+category: universum
 readingTime: 10
 tags: ["Simulationstheorie", "Informationstheorie", "Bostrom", "Shannon", "Kosmologie", "Philosophie"]
 ---

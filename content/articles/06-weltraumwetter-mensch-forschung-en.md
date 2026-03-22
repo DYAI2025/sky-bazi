@@ -5,6 +5,7 @@ metaDescription: "A balanced overview of research on possible human effects of s
 image: /images/articles/sun-sdo.jpg
 publishedAt: "2025-01-01"
 lang: en
+category: universum
 readingTime: 9
 tags: ["Space Weather", "Human Biology", "Research", "NASA", "Health"]
 ---

@@ -5,6 +5,7 @@ metaDescription: "The Hubble tension, early JWST galaxies, the Wow! signal, cosm
 image: /images/articles/jwst-deep-field.jpg
 publishedAt: "2025-01-01"
 lang: en
+category: universum
 readingTime: 9
 tags: ["Cosmology", "NASA", "JWST", "Hubble", "Astronomy", "Vacuum Decay"]
 ---

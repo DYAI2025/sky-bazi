@@ -5,6 +5,7 @@ metaDescription: "What is the cosmic web? How dark matter shapes filaments, void
 image: /images/articles/cosmic-web-simulation.jpg
 publishedAt: "2025-01-01"
 lang: en
+category: universum
 readingTime: 10
 tags: ["Cosmic Web", "Dark Matter", "Galaxies", "Cosmology", "NASA", "JWST"]
 ---

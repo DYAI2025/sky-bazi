@@ -5,6 +5,7 @@ metaDescription: "Wie entstand das Universum? Eine fundierte Erklärung zu Urkna
 image: /images/articles/cmb-planck.jpg
 publishedAt: "2025-01-01"
 lang: de
+category: universum
 readingTime: 11
 tags: ["Urknall", "Kosmologie", "Inflation", "JWST", "Hintergrundstrahlung", "NASA"]
 ---

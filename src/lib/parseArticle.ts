@@ -9,6 +9,7 @@ export interface ArticleMeta {
   readingTime: number;
   tags: string[];
   lang: Lang;
+  category: string;
 }
 
 export interface Article extends ArticleMeta {
@@ -72,6 +73,7 @@ const allArticles: Article[] = Object.entries(rawFiles)
       readingTime: meta.readingTime ?? 8,
       tags: meta.tags ?? [],
       lang: meta.lang ?? "de",
+      category: meta.category ?? "universum",
       content,
       excerpt: firstPara.replace(/\*\*/g, "").replace(/\*/g, "") + "…",
     } satisfies Article;
@@ -82,6 +84,10 @@ export function getArticles(lang: Lang): Article[] {
   const localized = allArticles.filter((a) => a.lang === lang);
   if (localized.length > 0) return localized;
   return allArticles.filter((a) => a.lang === "de");
+}
+
+export function getArticlesByCategory(lang: Lang, category: string): Article[] {
+  return getArticles(lang).filter((a) => a.category === category);
 }
 
 export function getArticle(slug: string, lang: Lang): Article | undefined {

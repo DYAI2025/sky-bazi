@@ -36,7 +36,7 @@ export function Header({ lang, setLang, t, bazodiacUrl }: HeaderProps) {
                 : "text-[rgba(215,230,255,0.40)] hover:text-[rgba(215,230,255,0.70)]"
             }`}
           >
-            Artikel
+            {t("nav.wissen")}
           </Link>
           <Link
             to="/erde"
