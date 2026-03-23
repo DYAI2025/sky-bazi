@@ -236,7 +236,7 @@ export function SpaceWeather({ t, lang }: SpaceWeatherProps) {
 
   if (!data) {
     return (
-      <section className="max-w-6xl mx-auto px-4 sm:px-8 py-16">
+      <section className="max-w-6xl mx-auto px-4 sm:px-8 py-16 min-h-[400px]">
         <div className="sky-card p-8">
           <div className="h-4 w-40 sky-skeleton mb-4" />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -269,7 +269,7 @@ export function SpaceWeather({ t, lang }: SpaceWeatherProps) {
   const AURORA_COLOR = "#D4AF37"; // gold   — aurora chance
 
   return (
-    <section className="max-w-6xl mx-auto px-4 sm:px-8 py-12 sm:py-16">
+    <section className="max-w-6xl mx-auto px-4 sm:px-8 py-12 sm:py-16 min-h-[400px]">
       <div className="sky-card p-6 sm:p-8">
 
         {/* Section Header */}

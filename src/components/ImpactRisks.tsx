@@ -269,7 +269,7 @@ export function ImpactRisks({ lang }: Props) {
 
   if (!data) {
     return (
-      <section className="max-w-6xl mx-auto px-4 sm:px-8 py-16">
+      <section className="max-w-6xl mx-auto px-4 sm:px-8 py-16 min-h-[400px]">
         <div className="sky-card p-8">
           <div className="h-4 w-48 sky-skeleton mb-4" />
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -286,7 +286,7 @@ export function ImpactRisks({ lang }: Props) {
   if (top.length === 0) return null;
 
   return (
-    <section className="max-w-6xl mx-auto px-4 sm:px-8 py-12 sm:py-16">
+    <section className="max-w-6xl mx-auto px-4 sm:px-8 py-12 sm:py-16 min-h-[400px]">
       <div className="sky-card p-6 sm:p-8">
 
         {/* Section Header */}

@@ -1,4 +1,5 @@
-import { ExternalLink } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ExternalLink, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import type { Lang } from "../lib/i18n";
 
@@ -14,6 +15,9 @@ export function Header({ lang, setLang, t, bazodiacUrl }: HeaderProps) {
   const onArticles = location.pathname.startsWith("/artikel");
   const onEarth    = location.pathname.startsWith("/erde");
   const onMars     = location.pathname.startsWith("/mars-rover");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
 
   return (
     <header className="fixed top-0 w-full z-50 backdrop-blur-xl bg-[#030a18]/80 border-b border-[rgba(70,130,220,0.12)]">
@@ -61,6 +65,14 @@ export function Header({ lang, setLang, t, bazodiacUrl }: HeaderProps) {
         </div>
 
         <div className="flex items-center gap-4">
+          <button
+            type="button"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="sm:hidden p-2 text-[rgba(215,230,255,0.50)] hover:text-[rgba(215,230,255,0.80)] transition-colors"
+            aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
+          >
+            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
           {/* Lang toggle */}
           <div className="flex items-center border border-[rgba(212,175,55,0.20)] rounded-md overflow-hidden bg-[rgba(255,255,255,0.04)]">
             <button
@@ -101,6 +113,29 @@ export function Header({ lang, setLang, t, bazodiacUrl }: HeaderProps) {
           </a>
         </div>
       </div>
+      {menuOpen && (
+        <nav className="sm:hidden border-t border-[rgba(70,130,220,0.12)] bg-[#030a18]/95 backdrop-blur-xl">
+          <div className="px-4 py-4 flex flex-col gap-3">
+            <Link to="/artikel" onClick={() => setMenuOpen(false)}
+              className={`text-sm py-2 transition-colors ${onArticles ? "text-[#D4AF37]" : "text-[rgba(215,230,255,0.60)]"}`}>
+              {t("nav.wissen")}
+            </Link>
+            <Link to="/erde" onClick={() => setMenuOpen(false)}
+              className={`text-sm py-2 transition-colors ${onEarth ? "text-[#D4AF37]" : "text-[rgba(215,230,255,0.60)]"}`}>
+              {t("nav.earth")}
+            </Link>
+            <Link to="/mars-rover" onClick={() => setMenuOpen(false)}
+              className={`text-sm py-2 transition-colors ${onMars ? "text-[#D4AF37]" : "text-[rgba(215,230,255,0.60)]"}`}>
+              {t("nav.mars")}
+            </Link>
+            <a href={bazodiacUrl} target="_blank" rel="noopener noreferrer"
+              className="text-sm py-2 text-[#D4AF37]/70 flex items-center gap-1.5">
+              {t("nav.ring")}
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+        </nav>
+      )}
     </header>
   );
 }
