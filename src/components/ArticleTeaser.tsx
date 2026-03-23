@@ -60,6 +60,7 @@ export function ArticleTeaser({ lang, t }: Props) {
                 <img
                   src={article.image}
                   alt={article.title}
+                  loading="lazy"
                   className="w-full h-full object-cover opacity-65 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120] via-[#0a1120]/40 to-transparent" />

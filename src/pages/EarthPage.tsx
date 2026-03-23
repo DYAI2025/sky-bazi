@@ -137,6 +137,7 @@ export function EarthPage({ lang, t }: Props) {
                     key={imgUrl}
                     src={imgUrl}
                     alt={active.caption || (lang === "de" ? "Erde vom Weltraum" : "Earth from space")}
+                    loading="lazy"
                     onLoad={() => setImgLoaded(true)}
                     className={`w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-contain transition-opacity duration-700 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
                     style={{ background: "#000" }}
@@ -222,6 +223,7 @@ export function EarthPage({ lang, t }: Props) {
                       <img
                         src={thumbUrl}
                         alt={`${lang === "de" ? "Bild" : "Image"} ${idx + 1}`}
+                        loading="lazy"
                         className="w-full h-full object-cover"
                         style={{ background: "#000" }}
                         onError={(e) => {

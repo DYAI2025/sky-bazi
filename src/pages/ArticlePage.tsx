@@ -27,6 +27,7 @@ export function ArticlePage({ lang, t, bazodiacUrl }: Props) {
           <img
             src={article.image}
             alt={article.title}
+            loading="lazy"
             className="w-full h-full object-cover opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#020509]/30 via-transparent to-[#020509]" />
@@ -110,6 +111,7 @@ export function ArticlePage({ lang, t, bazodiacUrl }: Props) {
                 <img
                   src={src}
                   alt={alt}
+                  loading="lazy"
                   className="w-full rounded-lg opacity-90"
                 />
                 {alt && (
@@ -194,6 +196,7 @@ export function ArticlePage({ lang, t, bazodiacUrl }: Props) {
                       <img
                         src={a.image}
                         alt={a.title}
+                        loading="lazy"
                         className="w-full h-full object-cover opacity-60 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500"
                       />
                     </div>

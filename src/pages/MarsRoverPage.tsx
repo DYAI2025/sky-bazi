@@ -87,6 +87,7 @@ function PhotoCard({ photo, lang, featured }: { photo: MarsPhoto; lang: Lang; fe
         <img
           src={photo.img_src}
           alt={`Sol ${photo.sol} — ${photo.camera.full_name}`}
+          loading="lazy"
           onLoad={() => setLoaded(true)}
           className={`w-full h-full object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
         />
@@ -266,6 +267,7 @@ export function MarsRoverPage({ lang, t }: Props) {
                       key={featured.img_src}
                       src={featured.img_src}
                       alt={`Sol ${featured.sol} — ${featured.camera.full_name}`}
+                      loading="lazy"
                       className="w-full h-full object-contain"
                     />
                     {/* Overlay info */}

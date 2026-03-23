@@ -76,6 +76,7 @@ export function ArticlesPage({ lang, t, bazodiacUrl }: Props) {
                     <img
                       src={article.image}
                       alt={article.title}
+                      loading="lazy"
                       className="w-full h-full object-cover opacity-70 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120] via-transparent to-transparent" />

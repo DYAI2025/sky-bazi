@@ -3,6 +3,18 @@ import type { Lang } from "../lib/i18n";
 
 const CONSENT_KEY = "sky:cookie-consent";
 
+const ADSENSE_SRC =
+  "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1712273263687132";
+
+function loadAdSense() {
+  if (document.querySelector(`script[src*="adsbygoogle"]`)) return;
+  const s = document.createElement("script");
+  s.src = ADSENSE_SRC;
+  s.async = true;
+  s.crossOrigin = "anonymous";
+  document.head.appendChild(s);
+}
+
 type ConsentState = "pending" | "accepted" | "rejected";
 
 function getStoredConsent(): ConsentState {
@@ -35,6 +47,7 @@ export function CookieConsent({ lang }: Props) {
 
   useEffect(() => {
     updateGoogleConsent(state === "accepted");
+    if (state === "accepted") loadAdSense();
   }, [state]);
 
   const accept = useCallback(() => {
