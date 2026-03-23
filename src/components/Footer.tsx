@@ -63,8 +63,9 @@ export function Footer({ t, bazodiacUrl, lang }: FooterProps) {
           </Link>
           <span>&middot;</span>
           <button
+            type="button"
             onClick={resetConsent}
-            className="hover:text-[rgba(215,230,255,0.60)] transition-colors"
+            className="hover:text-[rgba(215,230,255,0.60)] transition-colors focus-visible:ring-2 focus-visible:ring-[#D4AF37]/50 focus-visible:outline-none"
           >
             {lang === "de" ? "Cookie-Einstellungen" : "Cookie Settings"}
           </button>

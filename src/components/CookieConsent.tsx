@@ -70,7 +70,7 @@ export function CookieConsent({ lang }: Props) {
   const de = lang === "de";
 
   return (
-    <div className="fixed bottom-0 inset-x-0 z-[200] p-4 sm:p-6">
+    <div className="fixed bottom-0 inset-x-0 z-[200] p-4 sm:p-6" style={{ overscrollBehaviorY: "contain" }}>
       <div className="max-w-2xl mx-auto bg-[#0a1120]/95 backdrop-blur-md border border-[rgba(70,130,220,0.18)] rounded-2xl p-5 sm:p-6 shadow-2xl">
         <p className="text-sm text-[rgba(215,230,255,0.75)] leading-relaxed mb-4">
           {de

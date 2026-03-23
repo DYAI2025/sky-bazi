@@ -120,7 +120,7 @@ export function EarthPage({ lang, t }: Props) {
                 <button
                   onClick={handlePrev}
                   disabled={activeIdx === 0}
-                  className="shrink-0 w-9 h-9 rounded-full border border-[rgba(70,130,220,0.20)] flex items-center justify-center text-[rgba(215,230,255,0.40)] hover:text-[rgba(215,230,255,0.80)] hover:border-[rgba(70,130,220,0.50)] disabled:opacity-20 disabled:cursor-not-allowed transition-all"
+                  className="shrink-0 w-9 h-9 rounded-full border border-[rgba(70,130,220,0.20)] flex items-center justify-center text-[rgba(215,230,255,0.40)] hover:text-[rgba(215,230,255,0.80)] hover:border-[rgba(70,130,220,0.50)] disabled:opacity-20 disabled:cursor-not-allowed transition-[border-color,color] focus-visible:ring-2 focus-visible:ring-[#D4AF37]/50 focus-visible:outline-none"
                   aria-label={lang === "de" ? "Früheres Bild" : "Earlier image"}
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -151,7 +151,7 @@ export function EarthPage({ lang, t }: Props) {
                 <button
                   onClick={handleNext}
                   disabled={activeIdx === data.images.length - 1}
-                  className="shrink-0 w-9 h-9 rounded-full border border-[rgba(70,130,220,0.20)] flex items-center justify-center text-[rgba(215,230,255,0.40)] hover:text-[rgba(215,230,255,0.80)] hover:border-[rgba(70,130,220,0.50)] disabled:opacity-20 disabled:cursor-not-allowed transition-all"
+                  className="shrink-0 w-9 h-9 rounded-full border border-[rgba(70,130,220,0.20)] flex items-center justify-center text-[rgba(215,230,255,0.40)] hover:text-[rgba(215,230,255,0.80)] hover:border-[rgba(70,130,220,0.50)] disabled:opacity-20 disabled:cursor-not-allowed transition-[border-color,color] focus-visible:ring-2 focus-visible:ring-[#D4AF37]/50 focus-visible:outline-none"
                   aria-label={lang === "de" ? "Späteres Bild" : "Later image"}
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -213,7 +213,7 @@ export function EarthPage({ lang, t }: Props) {
                     <button
                       key={img.identifier}
                       onClick={() => { setActiveIdx(idx); setImgLoaded(false); }}
-                      className={`shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                      className={`shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden border-2 transition-[border-color,opacity] focus-visible:ring-2 focus-visible:ring-[#D4AF37]/50 focus-visible:outline-none ${
                         isActive
                           ? "border-[#D4AF37] opacity-100"
                           : "border-[rgba(70,130,220,0.15)] opacity-50 hover:opacity-80"

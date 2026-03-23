@@ -28,6 +28,10 @@
   }
 
   h1, h2, h3 { letter-spacing: 0.05em; }
+
+  button, a, [role="button"] {
+    touch-action: manipulation;
+  }
 }
 
 /* ── Glass Card — deep navy with blur ──────────────────────────────────── */
@@ -39,7 +43,9 @@
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(70, 130, 220, 0.18);
     border-radius: 16px;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .sky-card:hover {
     border-color: rgba(90, 150, 240, 0.35);
@@ -122,4 +128,13 @@
 @keyframes skeleton-slide {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

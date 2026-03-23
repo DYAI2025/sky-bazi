@@ -210,7 +210,7 @@ export function MarsRoverPage({ lang, t }: Props) {
                   <button
                     key={cam.key}
                     onClick={() => { setActiveCam(cam.key); setFeaturedIdx(0); }}
-                    className="px-3 py-1.5 rounded-lg text-[11px] uppercase tracking-[0.15em] border transition-all"
+                    className="px-3 py-1.5 rounded-lg text-[11px] uppercase tracking-[0.15em] border transition-[border-color,background-color,color] focus-visible:ring-2 focus-visible:ring-[#D4AF37]/50 focus-visible:outline-none"
                     style={{
                       borderColor: isActive ? RUST : "rgba(70,130,220,0.15)",
                       backgroundColor: isActive ? `${RUST}18` : "transparent",
@@ -314,7 +314,7 @@ export function MarsRoverPage({ lang, t }: Props) {
                         <button
                           key={photo.id}
                           onClick={() => setFeaturedIdx(idx)}
-                          className={`text-left rounded-xl overflow-hidden border-2 transition-all ${
+                          className={`text-left rounded-xl overflow-hidden border-2 transition-[border-color] focus-visible:ring-2 focus-visible:ring-[#D4AF37]/50 focus-visible:outline-none ${
                             idx === safeFeaturedIdx
                               ? "border-[#C1440E]"
                               : "border-[rgba(70,130,220,0.10)] hover:border-[rgba(70,130,220,0.30)]"

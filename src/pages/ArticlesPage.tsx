@@ -43,7 +43,7 @@ export function ArticlesPage({ lang, t, bazodiacUrl }: Props) {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`flex flex-col items-start px-5 py-3 rounded-xl border transition-all duration-200 ${
+                className={`flex flex-col items-start px-5 py-3 rounded-xl border transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#D4AF37]/50 focus-visible:outline-none ${
                   isActive
                     ? "border-[#D4AF37]/40 bg-[#D4AF37]/8 text-[#D4AF37]"
                     : "border-[rgba(215,230,255,0.08)] bg-[rgba(255,255,255,0.02)] text-[rgba(215,230,255,0.45)] hover:border-[rgba(215,230,255,0.15)] hover:text-[rgba(215,230,255,0.65)]"
@@ -69,7 +69,7 @@ export function ArticlesPage({ lang, t, bazodiacUrl }: Props) {
               <Link
                 key={article.slug}
                 to={`/artikel/${slug}`}
-                className="group relative bg-[#0a1120] border border-[rgba(215,230,255,0.07)] rounded-xl overflow-hidden hover:border-[#D4AF37]/30 transition-colors duration-300 flex flex-col"
+                className="group relative bg-[#0a1120] border border-[rgba(215,230,255,0.07)] rounded-xl overflow-hidden hover:border-[#D4AF37]/30 transition-colors duration-300 flex flex-col focus-visible:ring-2 focus-visible:ring-[#D4AF37]/50 focus-visible:outline-none"
               >
                 {article.image && (
                   <div className="relative h-44 overflow-hidden bg-[#030a18]">

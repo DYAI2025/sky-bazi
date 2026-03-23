@@ -76,6 +76,7 @@ export function ApodHero({ t }: ApodHeroProps) {
             srcSet={apod.hdurl ? `${apod.url} 960w, ${apod.hdurl} 1920w` : undefined}
             sizes="100vw"
             alt={apod.title}
+            fetchPriority="high"
             onLoad={() => setImgLoaded(true)}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               imgLoaded ? "opacity-100" : "opacity-0"

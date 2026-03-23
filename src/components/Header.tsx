@@ -68,7 +68,7 @@ export function Header({ lang, setLang, t, bazodiacUrl }: HeaderProps) {
           <button
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="sm:hidden p-2 text-[rgba(215,230,255,0.50)] hover:text-[rgba(215,230,255,0.80)] transition-colors"
+            className="sm:hidden p-2 text-[rgba(215,230,255,0.50)] hover:text-[rgba(215,230,255,0.80)] transition-colors focus-visible:ring-2 focus-visible:ring-[#D4AF37]/50 focus-visible:outline-none"
             aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
           >
             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -79,7 +79,7 @@ export function Header({ lang, setLang, t, bazodiacUrl }: HeaderProps) {
               onClick={() => setLang("de")}
               aria-label={lang === "de" ? "Sprache: Deutsch (aktiv)" : "Switch to German"}
               aria-pressed={lang === "de"}
-              className={`px-2.5 py-1 text-[11px] uppercase tracking-[0.15em] transition-all ${
+              className={`px-2.5 py-1 text-[11px] uppercase tracking-[0.15em] transition-colors focus-visible:ring-2 focus-visible:ring-[#D4AF37]/50 focus-visible:outline-none ${
                 lang === "de"
                   ? "bg-[rgba(212,175,55,0.12)] text-[#D4AF37] font-semibold"
                   : "text-[rgba(215,230,255,0.35)] hover:text-[rgba(215,230,255,0.65)]"
@@ -91,7 +91,7 @@ export function Header({ lang, setLang, t, bazodiacUrl }: HeaderProps) {
               onClick={() => setLang("en")}
               aria-label={lang === "en" ? "Language: English (active)" : "Auf Englisch wechseln"}
               aria-pressed={lang === "en"}
-              className={`px-2.5 py-1 text-[11px] uppercase tracking-[0.15em] transition-all ${
+              className={`px-2.5 py-1 text-[11px] uppercase tracking-[0.15em] transition-colors focus-visible:ring-2 focus-visible:ring-[#D4AF37]/50 focus-visible:outline-none ${
                 lang === "en"
                   ? "bg-[rgba(212,175,55,0.12)] text-[#D4AF37] font-semibold"
                   : "text-[rgba(215,230,255,0.35)] hover:text-[rgba(215,230,255,0.65)]"

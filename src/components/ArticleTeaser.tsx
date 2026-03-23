@@ -54,7 +54,7 @@ export function ArticleTeaser({ lang, t }: Props) {
             <Link
               key={article.slug}
               to={`/artikel/${slug}`}
-              className="group relative overflow-hidden rounded-2xl bg-[#0a1120] border border-[rgba(215,230,255,0.07)] hover:border-[#D4AF37]/30 transition-all duration-300 flex flex-col"
+              className="group relative overflow-hidden rounded-2xl bg-[#0a1120] border border-[rgba(215,230,255,0.07)] hover:border-[#D4AF37]/30 transition-[border-color] duration-300 flex flex-col"
             >
               <div className={`relative overflow-hidden ${isLarge ? "h-64 sm:h-72" : "h-52 sm:h-60"}`}>
                 <img
