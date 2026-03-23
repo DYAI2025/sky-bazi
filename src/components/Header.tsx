@@ -65,6 +65,8 @@ export function Header({ lang, setLang, t, bazodiacUrl }: HeaderProps) {
           <div className="flex items-center border border-[rgba(212,175,55,0.20)] rounded-md overflow-hidden bg-[rgba(255,255,255,0.04)]">
             <button
               onClick={() => setLang("de")}
+              aria-label={lang === "de" ? "Sprache: Deutsch (aktiv)" : "Switch to German"}
+              aria-pressed={lang === "de"}
               className={`px-2.5 py-1 text-[11px] uppercase tracking-[0.15em] transition-all ${
                 lang === "de"
                   ? "bg-[rgba(212,175,55,0.12)] text-[#D4AF37] font-semibold"
@@ -75,6 +77,8 @@ export function Header({ lang, setLang, t, bazodiacUrl }: HeaderProps) {
             </button>
             <button
               onClick={() => setLang("en")}
+              aria-label={lang === "en" ? "Language: English (active)" : "Auf Englisch wechseln"}
+              aria-pressed={lang === "en"}
               className={`px-2.5 py-1 text-[11px] uppercase tracking-[0.15em] transition-all ${
                 lang === "en"
                   ? "bg-[rgba(212,175,55,0.12)] text-[#D4AF37] font-semibold"

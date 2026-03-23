@@ -3,6 +3,11 @@ import type { Lang } from "../lib/i18n";
 
 const CONSENT_KEY = "sky:cookie-consent";
 
+export function resetConsent() {
+  localStorage.removeItem(CONSENT_KEY);
+  window.location.reload();
+}
+
 const ADSENSE_SRC =
   "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1712273263687132";
 
@@ -69,21 +74,23 @@ export function CookieConsent({ lang }: Props) {
       <div className="max-w-2xl mx-auto bg-[#0a1120]/95 backdrop-blur-md border border-[rgba(70,130,220,0.18)] rounded-2xl p-5 sm:p-6 shadow-2xl">
         <p className="text-sm text-[rgba(215,230,255,0.75)] leading-relaxed mb-4">
           {de
-            ? "Diese Website verwendet Cookies fuer Werbung (Google AdSense) und zur Zwischenspeicherung von NASA-Daten. Mit 'Akzeptieren' stimmen Sie der Nutzung von Werbe-Cookies zu. "
+            ? "Diese Website verwendet Cookies für Werbung (Google AdSense) und zur Zwischenspeicherung von NASA-Daten. Mit 'Akzeptieren' stimmen Sie der Nutzung von Werbe-Cookies zu. "
             : "This website uses cookies for advertising (Google AdSense) and to cache NASA data. By clicking 'Accept', you consent to the use of advertising cookies. "}
           <a href="/datenschutz" className="text-[#D4AF37]/70 hover:text-[#D4AF37] underline underline-offset-2 transition-colors">
-            {de ? "Datenschutzerklaerung" : "Privacy policy"}
+            {de ? "Datenschutzerklärung" : "Privacy policy"}
           </a>
         </p>
 
         <div className="flex items-center gap-3">
           <button
+            type="button"
             onClick={accept}
             className="px-5 py-2 bg-[#D4AF37] text-[#020509] text-sm font-semibold rounded-full hover:bg-[#e8c84a] transition-colors"
           >
             {de ? "Akzeptieren" : "Accept"}
           </button>
           <button
+            type="button"
             onClick={reject}
             className="px-5 py-2 border border-[rgba(215,230,255,0.15)] text-[rgba(215,230,255,0.60)] text-sm rounded-full hover:border-[rgba(215,230,255,0.30)] hover:text-[rgba(215,230,255,0.80)] transition-colors"
           >

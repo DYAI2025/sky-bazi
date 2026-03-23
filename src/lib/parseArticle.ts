@@ -1,5 +1,7 @@
 import type { Lang } from "./i18n";
 
+export type ArticleCategory = "universum" | "mensch";
+
 export interface ArticleMeta {
   slug: string;
   title: string;
@@ -9,7 +11,7 @@ export interface ArticleMeta {
   readingTime: number;
   tags: string[];
   lang: Lang;
-  category: string;
+  category: ArticleCategory;
 }
 
 export interface Article extends ArticleMeta {
@@ -73,12 +75,12 @@ const allArticles: Article[] = Object.entries(rawFiles)
       readingTime: meta.readingTime ?? 8,
       tags: meta.tags ?? [],
       lang: meta.lang ?? "de",
-      category: meta.category ?? "universum",
+      category: (String(meta.category ?? "universum").toLowerCase() as ArticleCategory),
       content,
       excerpt: firstPara.replace(/\*\*/g, "").replace(/\*/g, "") + "…",
     } satisfies Article;
   })
-  .sort((a, b) => a.slug.localeCompare(b.slug));
+  .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 
 export function getArticles(lang: Lang): Article[] {
   const localized = allArticles.filter((a) => a.lang === lang);
@@ -86,7 +88,7 @@ export function getArticles(lang: Lang): Article[] {
   return allArticles.filter((a) => a.lang === "de");
 }
 
-export function getArticlesByCategory(lang: Lang, category: string): Article[] {
+export function getArticlesByCategory(lang: Lang, category: ArticleCategory): Article[] {
   return getArticles(lang).filter((a) => a.category === category);
 }
 

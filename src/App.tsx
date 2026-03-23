@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useLang } from "./lib/i18n";
 import { Header } from "./components/Header";
@@ -17,6 +18,7 @@ import { ImpressumPage } from "./pages/ImpressumPage";
 import { DatenschutzPage } from "./pages/DatenschutzPage";
 import { CookieConsent } from "./components/CookieConsent";
 import SolarPressureWidget from "./components/SolarPressureWidget";
+import { NotFoundPage } from "./pages/NotFoundPage";
 
 const BAZODIAC_URL = import.meta.env.VITE_BAZODIAC_URL || "https://bazodiac.space";
 
@@ -40,6 +42,10 @@ function HomePage({ lang, t }: { lang: "de" | "en"; t: (k: string) => string }) 
 export default function App() {
   const { lang, setLang, t } = useLang();
 
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   return (
     <div className="min-h-screen font-sans selection:bg-[#D4AF37]/20">
       {/* Film grain texture */}
@@ -55,7 +61,7 @@ export default function App() {
         <Route path="/mars-rover" element={<MarsRoverPage lang={lang} t={t} />} />
         <Route path="/impressum" element={<ImpressumPage lang={lang} />} />
         <Route path="/datenschutz" element={<DatenschutzPage lang={lang} />} />
-        <Route path="*" element={<HomePage lang={lang} t={t} />} />
+        <Route path="*" element={<NotFoundPage lang={lang} />} />
       </Routes>
 
       <Footer t={t} bazodiacUrl={BAZODIAC_URL} lang={lang} />

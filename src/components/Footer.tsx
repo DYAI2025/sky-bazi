@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { IS_DEMO_KEY } from "../services/nasa";
+import { resetConsent } from "./CookieConsent";
 import type { Lang } from "../lib/i18n";
 
 interface FooterProps {
@@ -60,6 +61,13 @@ export function Footer({ t, bazodiacUrl, lang }: FooterProps) {
           <Link to="/datenschutz" className="hover:text-[rgba(215,230,255,0.60)] transition-colors">
             {lang === "de" ? "Datenschutz" : "Privacy"}
           </Link>
+          <span>&middot;</span>
+          <button
+            onClick={resetConsent}
+            className="hover:text-[rgba(215,230,255,0.60)] transition-colors"
+          >
+            {lang === "de" ? "Cookie-Einstellungen" : "Cookie Settings"}
+          </button>
         </div>
       </div>
     </footer>

@@ -3,7 +3,7 @@ import { useState, useCallback } from "react";
 export type Lang = "de" | "en";
 
 const translations = {
-  "site.title": { de: "Der Himmel ueber deiner Signatur", en: "The Sky Above Your Signature" },
+  "site.title": { de: "Der Himmel über deiner Signatur", en: "The Sky Above Your Signature" },
   "site.brand": { de: "Bazodiac Sky", en: "Bazodiac Sky" },
   "nav.ring": { de: "Deine Signatur", en: "Your Signature" },
 
@@ -14,27 +14,27 @@ const translations = {
 
   "weather.title": { de: "Weltraumwetter", en: "Space Weather" },
   "weather.subtitle": { de: "Live-Daten der NASA DONKI", en: "Live data from NASA DONKI" },
-  "weather.solar": { de: "Sonnenaktivitaet", en: "Solar Activity" },
+  "weather.solar": { de: "Sonnenaktivität", en: "Solar Activity" },
   "weather.geo": { de: "Geomagnetisch", en: "Geomagnetic" },
   "weather.quiet": { de: "Ruhig", en: "Quiet" },
   "weather.active": { de: "Aktiv", en: "Active" },
   "weather.storm": { de: "Sturm", en: "Storm" },
   "weather.severe": { de: "Schwerer Sturm", en: "Severe Storm" },
   "weather.noFlares": { de: "Keine Flares in den letzten 7 Tagen", en: "No flares in the last 7 days" },
-  "weather.noStorms": { de: "Keine Stuerme in den letzten 7 Tagen", en: "No storms in the last 7 days" },
+  "weather.noStorms": { de: "Keine Stürme in den letzten 7 Tagen", en: "No storms in the last 7 days" },
   "weather.lastFlare": { de: "Letzter Flare", en: "Last Flare" },
   "weather.kpIndex": { de: "Kp-Index", en: "Kp Index" },
   "weather.loading": { de: "Lade Weltraumwetter...", en: "Loading space weather..." },
 
   "planets.title": { de: "Planetenstand Heute", en: "Planet Positions Today" },
   "planets.subtitle": { de: "Echte astronomische Positionen, berechnet in Echtzeit", en: "Real astronomical positions, calculated in real-time" },
-  "planets.retrograde": { de: "Ruecklaeufig", en: "Retrograde" },
+  "planets.retrograde": { de: "Rückläufig", en: "Retrograde" },
   "planets.sign": { de: "Zeichen", en: "Sign" },
 
-  "funnel.headline": { de: "Was bedeutet das fuer DEINE Signatur?", en: "What does this mean for YOUR Signature?" },
-  "funnel.body": { de: "Die Planeten stehen fuer alle gleich am Himmel. Aber was sie fuer DICH bedeuten, haengt von deiner persoenlichen Signatur ab.", en: "The planets are in the same position for everyone. But what they mean for YOU depends on your personal Signature." },
+  "funnel.headline": { de: "Was bedeutet das für DEINE Signatur?", en: "What does this mean for YOUR Signature?" },
+  "funnel.body": { de: "Die Planeten stehen für alle gleich am Himmel. Aber was sie für DICH bedeuten, hängt von deiner persönlichen Signatur ab.", en: "The planets are in the same position for everyone. But what they mean for YOU depends on your personal Signature." },
   "funnel.cta": { de: "Signatur erstellen", en: "Create Signature" },
-  "funnel.weather": { de: "Sonnenstuerme beeinflussen dein Energiefeld. Wie stark du reagierst, haengt von deiner Signatur ab.", en: "Solar storms affect your energy field. How strongly you react depends on your Signature." },
+  "funnel.weather": { de: "Sonnenstürme beeinflussen dein Energiefeld. Wie stark du reagierst, hängt von deiner Signatur ab.", en: "Solar storms affect your energy field. How strongly you react depends on your Signature." },
   "funnel.weatherCta": { de: "Dein Signatur-Wetter entdecken", en: "Discover your Signature weather" },
 
   "nav.wissen": { de: "Wissen", en: "Knowledge" },
@@ -74,7 +74,18 @@ const translations = {
 type Key = keyof typeof translations;
 
 export function useLang() {
-  const [lang, setLang] = useState<Lang>("de");
+  const [lang, setLangState] = useState<Lang>(() => {
+    try {
+      const stored = localStorage.getItem("sky:lang");
+      if (stored === "en") return "en";
+    } catch { /* ignore */ }
+    return "de";
+  });
+
+  const setLang = useCallback((l: Lang) => {
+    setLangState(l);
+    try { localStorage.setItem("sky:lang", l); } catch { /* ignore */ }
+  }, []);
 
   const t = useCallback(
     (key: string): string => {

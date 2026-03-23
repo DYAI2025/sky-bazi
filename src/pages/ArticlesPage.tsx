@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { getArticlesByCategory } from "../lib/parseArticle";
+import { getArticlesByCategory, type ArticleCategory } from "../lib/parseArticle";
 import type { Lang } from "../lib/i18n";
 
 interface Props {
@@ -12,11 +12,11 @@ interface Props {
 const CATEGORIES = ["universum", "mensch"] as const;
 
 export function ArticlesPage({ lang, t, bazodiacUrl }: Props) {
-  const [activeCategory, setActiveCategory] = useState<string>("universum");
+  const [activeCategory, setActiveCategory] = useState<ArticleCategory>("universum");
   const articles = getArticlesByCategory(lang, activeCategory);
 
   const c = {
-    label: "Bazodiac Sky · Wissen",
+    label: `Bazodiac Sky · ${t("nav.wissen")}`,
     minutes: lang === "de" ? "Min. Lesezeit" : "min read",
     read: lang === "de" ? "Lesen →" : "Read →",
     ctaText: lang === "de"
