@@ -13,6 +13,17 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/sentry/, "/sentry.api"),
       },
+      // Proxy NOAA space weather APIs to avoid CORS in dev
+      "/api/noaa-xray": {
+        target: "https://services.swpc.noaa.gov",
+        changeOrigin: true,
+        rewrite: () => "/json/goes_xray_flux.json",
+      },
+      "/api/noaa-proton": {
+        target: "https://services.swpc.noaa.gov",
+        changeOrigin: true,
+        rewrite: () => "/json/goes_proton_flux.json",
+      },
     },
   },
   preview: { port: 3002 },

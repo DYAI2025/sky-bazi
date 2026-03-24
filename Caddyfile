@@ -2,12 +2,26 @@
     root * /app/dist
     encode gzip
 
-    # Proxy JPL Sentry API to avoid CORS (ssd-api.jpl.nasa.gov has no CORS headers)
-    # Must be a named handle block so it is mutually exclusive with the catch-all below
+    # Proxy JPL Sentry API to avoid CORS
     handle /api/sentry {
         rewrite * /sentry.api
         reverse_proxy https://ssd-api.jpl.nasa.gov {
             header_up Host ssd-api.jpl.nasa.gov
+        }
+    }
+
+    # Proxy NOAA space weather APIs to avoid CORS
+    handle /api/noaa-xray {
+        rewrite * /json/goes_xray_flux.json
+        reverse_proxy https://services.swpc.noaa.gov {
+            header_up Host services.swpc.noaa.gov
+        }
+    }
+
+    handle /api/noaa-proton {
+        rewrite * /json/goes_proton_flux.json
+        reverse_proxy https://services.swpc.noaa.gov {
+            header_up Host services.swpc.noaa.gov
         }
     }
 

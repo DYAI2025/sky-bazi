@@ -465,7 +465,8 @@ export function classifyGeoActivity(storms: GeoStorm[]): { level: SolarActivityL
 
 // ── NOAA SWPC — Live Solar Data ──────────────────────────────────────────
 
-const NOAA_BASE = "https://services.swpc.noaa.gov";
+// NOAA endpoints are proxied via Caddyfile to avoid CORS (no CORS headers on swpc.noaa.gov)
+const NOAA_BASE = "";
 
 export interface NoaaLiveData {
   kp: number;
@@ -485,8 +486,8 @@ export async function fetchNoaaLive(): Promise<NoaaLiveData> {
 
     const [kpRes, xrayRes, protonRes] = await Promise.allSettled([
       fetch(`${NOAA_BASE}/json/planetary_k_index_1m.json`),
-      fetch(`${NOAA_BASE}/json/goes_xray_flux.json`),
-      fetch(`${NOAA_BASE}/json/goes_proton_flux.json`),
+      fetch(`/api/noaa-xray`),
+      fetch(`/api/noaa-proton`),
     ]);
 
     let kp = 0;
