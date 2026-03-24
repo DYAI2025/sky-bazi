@@ -2,7 +2,7 @@
 slug: /migraene-cluster-kopfschmerz-sonnensturm
 title: "Migräne und Cluster-Kopfschmerz bei Sonnenstürmen: Was die Forschung wirklich zeigt"
 metaDescription: "Geomagnetische Stürme erhöhen nicht die Migräne-Häufigkeit, aber die Intensität. Was Studien zu Cluster-Kopfschmerz, Hypothalamus und magnetosensitiven Subgruppen zeigen."
-image: /images/articles/placeholder.jpg
+image: /images/articles/migraene-sonnensturm-thumbnail.jpg
 publishedAt: "2026-03-22"
 lang: de
 readingTime: 8

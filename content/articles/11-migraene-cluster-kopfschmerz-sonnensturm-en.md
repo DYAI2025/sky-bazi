@@ -2,7 +2,7 @@
 slug: /migraene-cluster-kopfschmerz-sonnensturm
 title: "Migraine and Cluster Headache During Solar Storms: What the Research Actually Shows"
 metaDescription: "Geomagnetic storms don't increase migraine frequency but significantly intensify attacks. What studies show about cluster headache, the hypothalamus, and magnetosensitive subgroups."
-image: /images/articles/placeholder.jpg
+image: /images/articles/migraene-sonnensturm-thumbnail.jpg
 publishedAt: "2026-03-22"
 lang: en
 readingTime: 6

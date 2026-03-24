@@ -2,7 +2,7 @@
 slug: /heliobiologische-resonanz-sonnenwetter-mensch
 title: "Heliobiological Resonance: How Space Weather Affects the Human Body"
 metaDescription: "From Chizhevsky to modern research: how solar storms, geomagnetic activity, and the Kp index affect the autonomic nervous system, heart rate variability, and biological rhythms."
-image: /images/articles/placeholder.jpg
+image: /images/articles/heliobiologie-thumbnail.jpg
 publishedAt: "2026-03-22"
 lang: en
 readingTime: 7

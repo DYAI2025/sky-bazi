@@ -2,7 +2,7 @@
 slug: /herz-kreislauf-magnetsturm-forschung
 title: "Herz-Kreislauf und Magnetstürme: Was epidemiologische Studien über kardiovaskuläre Risiken zeigen"
 metaDescription: "Geomagnetische Stürme erhöhen das Risiko für Herzinfarkt und Schlaganfall messbar. Epidemiologische Daten aus 263 US-Städten, Risikofaktoren und der Lag-Effekt im Überblick."
-image: /images/articles/placeholder.jpg
+image: /images/articles/herz-kreislauf-thumbnail.jpg
 publishedAt: "2026-03-22"
 lang: de
 readingTime: 8

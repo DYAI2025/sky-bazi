@@ -2,7 +2,7 @@
 slug: /zirbeldruese-magnetfeld-melatonin
 title: "Die Zirbeldrüse im Magnetfeld: Wie geomagnetische Stürme die Melatonin-Produktion beeinflussen"
 metaDescription: "Die Zirbeldrüse reagiert auf elektromagnetische Feldänderungen. Was die Forschung über Melatonin-Suppression bei geomagnetischen Stürmen, Schlafstörungen und Immuneffekte zeigt."
-image: /images/articles/placeholder.jpg
+image: /images/articles/zirbeldruese-thumbnail.jpg
 publishedAt: "2026-03-22"
 lang: de
 readingTime: 8

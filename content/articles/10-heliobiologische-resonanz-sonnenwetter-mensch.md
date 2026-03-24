@@ -2,7 +2,7 @@
 slug: /heliobiologische-resonanz-sonnenwetter-mensch
 title: "Heliobiologische Resonanz: Wie Sonnenwetter den menschlichen Körper beeinflusst"
 metaDescription: "Von Chizhevsky bis zur modernen Forschung: Wie Sonnenstürme, geomagnetische Aktivität und der Kp-Index das autonome Nervensystem, die Herzratenvariabilität und biologische Rhythmen beeinflussen."
-image: /images/articles/placeholder.jpg
+image: /images/articles/heliobiologie-thumbnail.jpg
 publishedAt: "2026-03-22"
 lang: de
 readingTime: 10

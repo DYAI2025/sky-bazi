@@ -2,7 +2,7 @@
 slug: /zirbeldruese-magnetfeld-melatonin
 title: "The Pineal Gland and Magnetic Fields: How Geomagnetic Storms Affect Melatonin Production"
 metaDescription: "The pineal gland responds to electromagnetic field changes. What research shows about melatonin suppression during geomagnetic storms, sleep disruption, and immune effects."
-image: /images/articles/placeholder.jpg
+image: /images/articles/zirbeldruese-thumbnail.jpg
 publishedAt: "2026-03-22"
 lang: en
 readingTime: 6

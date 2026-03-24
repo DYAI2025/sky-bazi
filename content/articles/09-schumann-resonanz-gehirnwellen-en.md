@@ -2,7 +2,7 @@
 slug: /schumann-resonanz-gehirnwellen
 title: "Schumann Resonance and Brain Waves: Does the Earth Oscillate in Sync with the Brain?"
 metaDescription: "The Schumann resonance at 7.83 Hz overlaps with human alpha brain waves. What research reveals about this frequency coincidence, ionospheric changes, and biological effects."
-image: /images/articles/placeholder.jpg
+image: /images/articles/schumann-resonanz-thumbnail.jpg
 publishedAt: "2026-03-22"
 lang: en
 readingTime: 6

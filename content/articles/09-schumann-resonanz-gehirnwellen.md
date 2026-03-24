@@ -2,7 +2,7 @@
 slug: /schumann-resonanz-gehirnwellen
 title: "Schumann-Resonanz und Gehirnwellen: Schwingt die Erde im Takt des Gehirns?"
 metaDescription: "Die Schumann-Resonanz bei 7,83 Hz liegt im Bereich menschlicher Alpha-Gehirnwellen. Was die Forschung über diese Frequenzüberlappung, Ionosphärenveränderungen und biologische Effekte zeigt."
-image: /images/articles/placeholder.jpg
+image: /images/articles/schumann-resonanz-thumbnail.jpg
 publishedAt: "2026-03-22"
 lang: de
 readingTime: 8

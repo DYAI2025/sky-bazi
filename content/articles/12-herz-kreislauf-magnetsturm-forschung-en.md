@@ -2,7 +2,7 @@
 slug: /herz-kreislauf-magnetsturm-forschung
 title: "Cardiovascular Health and Magnetic Storms: What Epidemiological Studies Reveal"
 metaDescription: "Geomagnetic storms measurably increase risk for myocardial infarction and stroke. Epidemiological data from 263 US cities, risk stratification, and the lag effect explained."
-image: /images/articles/placeholder.jpg
+image: /images/articles/herz-kreislauf-thumbnail.jpg
 publishedAt: "2026-03-22"
 lang: en
 readingTime: 6
