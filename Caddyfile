@@ -1,0 +1,15 @@
+:{$PORT:3000} {
+    root * /app/dist
+    encode gzip
+
+    # Proxy JPL Sentry API to avoid CORS (no CORS headers on ssd-api.jpl.nasa.gov)
+    handle /api/sentry {
+        reverse_proxy https://ssd-api.jpl.nasa.gov/sentry.api {
+            header_up Host ssd-api.jpl.nasa.gov
+        }
+    }
+
+    # SPA fallback — all unmatched routes serve index.html
+    file_server
+    try_files {path} /index.html
+}
