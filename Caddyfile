@@ -2,7 +2,8 @@
     root * /app/dist
     encode gzip
 
-    # Proxy JPL Sentry API to avoid CORS (no CORS headers on ssd-api.jpl.nasa.gov)
+    # Proxy JPL Sentry API to avoid CORS (ssd-api.jpl.nasa.gov has no CORS headers)
+    # Must be a named handle block so it is mutually exclusive with the catch-all below
     handle /api/sentry {
         rewrite * /sentry.api
         reverse_proxy https://ssd-api.jpl.nasa.gov {
@@ -10,7 +11,9 @@
         }
     }
 
-    # SPA fallback — all unmatched routes serve index.html
-    file_server
-    try_files {path} /index.html
+    # Catch-all: SPA fallback — unmatched paths serve index.html
+    handle {
+        try_files {path} /index.html
+        file_server
+    }
 }
