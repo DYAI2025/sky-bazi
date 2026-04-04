@@ -365,16 +365,24 @@ export async function fetchEpicLatest(): Promise<EpicFeedData> {
     if (cached) return cached;
     if (isRateLimited(EPIC_CACHE_KEY)) throw new Error("Rate limited");
 
-    const res = await fetch(`${EPIC_BASE}/api/natural/images`);
-    if (res.status === 429) { markRateLimited(EPIC_CACHE_KEY); throw new Error("Rate limited"); }
-    if (!res.ok) throw new Error(`EPIC API error: ${res.status}`);
-    const images: EpicImage[] = await res.json();
-    const arr = Array.isArray(images) ? images : [];
-
-    const imageDate = arr.length > 0 ? arr[0].date.slice(0, 10) : "";
-    const data: EpicFeedData = { images: arr, imageDate, fetchedAt: Date.now() };
-    setCache(EPIC_CACHE_KEY, data);
-    return data;
+    // /api/natural/images redirects to a schema page, not JSON.
+    // Instead, try /api/natural/date/{date} going back up to 14 days.
+    const today = new Date();
+    for (let i = 0; i < 14; i++) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const dateStr = d.toISOString().slice(0, 10);
+      const res = await fetch(`${EPIC_BASE}/api/natural/date/${dateStr}`);
+      if (res.status === 429) { markRateLimited(EPIC_CACHE_KEY); throw new Error("Rate limited"); }
+      if (!res.ok) continue;
+      const images: EpicImage[] = await res.json();
+      if (Array.isArray(images) && images.length > 0) {
+        const data: EpicFeedData = { images, imageDate: dateStr, fetchedAt: Date.now() };
+        setCache(EPIC_CACHE_KEY, data);
+        return data;
+      }
+    }
+    throw new Error("No EPIC images available in the last 14 days");
   });
 }
 
