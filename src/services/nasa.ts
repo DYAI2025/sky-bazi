@@ -349,12 +349,14 @@ export interface EpicFeedData {
 const EPIC_CACHE_KEY = "epic_v2"; // v2: 4h TTL
 const EPIC_TTL = 4 * 60 * 60 * 1000; // 4 hours — EPIC posts ~12 images/day, refreshing often not needed
 
-/** Builds the full JPG URL for an EPIC image */
+const EPIC_BASE = "https://epic.gsfc.nasa.gov";
+
+/** Builds the full JPG URL for an EPIC image (via epic.gsfc.nasa.gov — no API key needed) */
 export function buildEpicImageUrl(image: string, date: string): string {
   // date: "2024-03-10 01:15:42" → 2024/03/10
   const d = date.slice(0, 10);
   const [y, m, day] = d.split("-");
-  return `${BASE}/EPIC/archive/natural/${y}/${m}/${day}/jpg/${image}.jpg?api_key=${API_KEY}`;
+  return `${EPIC_BASE}/archive/natural/${y}/${m}/${day}/jpg/${image}.jpg`;
 }
 
 export async function fetchEpicLatest(): Promise<EpicFeedData> {
@@ -363,7 +365,7 @@ export async function fetchEpicLatest(): Promise<EpicFeedData> {
     if (cached) return cached;
     if (isRateLimited(EPIC_CACHE_KEY)) throw new Error("Rate limited");
 
-    const res = await fetch(`${BASE}/EPIC/api/natural/images?api_key=${API_KEY}`);
+    const res = await fetch(`${EPIC_BASE}/api/natural/images`);
     if (res.status === 429) { markRateLimited(EPIC_CACHE_KEY); throw new Error("Rate limited"); }
     if (!res.ok) throw new Error(`EPIC API error: ${res.status}`);
     const images: EpicImage[] = await res.json();
@@ -407,22 +409,68 @@ export interface MarsPhotoFeedData {
   fetchedAt: number;
 }
 
-const MARS_CACHE_KEY = "mars_latest_v2"; // v2: 8h TTL
-const MARS_TTL = 8 * 60 * 60 * 1000; // 8 hours — Curiosity sends batches once per sol (~24.6 h)
+const MARS_CACHE_KEY = "mars_latest_v3"; // v3: switched to NASA Image Library (mars-photos API retired)
+const MARS_TTL = 8 * 60 * 60 * 1000; // 8 hours
+
+// Curiosity launch/landing constants for rover metadata
+const CURIOSITY_LANDING_SOL_OFFSET_MS = new Date("2012-08-06").getTime();
+
+function estimateSol(earthDate: string): number {
+  const ms = new Date(earthDate).getTime() - CURIOSITY_LANDING_SOL_OFFSET_MS;
+  return Math.max(0, Math.floor(ms / (24.6 * 60 * 60 * 1000)));
+}
+
+/** Extracts sol number from image description if present */
+function parseSolFromDescription(description: string): number | null {
+  const match = description.match(/\b(\d{3,5})[,. ]*(?:th\s+)?sol\b/i)
+    ?? description.match(/\bsol[,. ]+(\d{3,5})\b/i);
+  return match ? parseInt(match[1], 10) : null;
+}
 
 export async function fetchMarsLatestPhotos(): Promise<MarsPhotoFeedData> {
   return fetchOnce(MARS_CACHE_KEY, async () => {
     const cached = getCached<MarsPhotoFeedData>(MARS_CACHE_KEY, MARS_TTL);
     if (cached) return cached;
-    if (isRateLimited(MARS_CACHE_KEY)) throw new Error("Rate limited");
 
-    const res = await fetch(
-      `${BASE}/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=${API_KEY}`
-    );
-    if (res.status === 429) { markRateLimited(MARS_CACHE_KEY); throw new Error("Rate limited"); }
-    if (!res.ok) throw new Error(`Mars Rover API error: ${res.status}`);
+    // NASA mars-photos API (api.nasa.gov/mars-photos) is decommissioned — backend Heroku app gone.
+    // Using NASA Image and Video Library instead (no API key needed, CORS open).
+    const url = "https://images-api.nasa.gov/search?q=curiosity+mars+sol&media_type=image&page_size=20&year_start=2024";
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Mars Image Library error: ${res.status}`);
     const json = await res.json();
-    const photos: MarsPhoto[] = Array.isArray(json.latest_photos) ? json.latest_photos : [];
+
+    const items: Array<{
+      href: string;
+      data: Array<{ nasa_id: string; date_created: string; description: string; title: string }>;
+      links?: Array<{ href: string; rel: string }>;
+    }> = Array.isArray(json?.collection?.items) ? json.collection.items : [];
+
+    const photos: MarsPhoto[] = items
+      .filter((item) => item.data?.[0] && item.links?.[0]?.href)
+      .map((item, idx) => {
+        const d = item.data[0];
+        const earthDate = d.date_created.slice(0, 10);
+        const sol = parseSolFromDescription(d.description) ?? estimateSol(earthDate);
+        // Large image: replace ~thumb suffix with ~large
+        const imgSrc = (item.links![0].href as string).replace(/~thumb\.jpg$/, "~large.jpg");
+        return {
+          id: idx + 1,
+          sol,
+          camera: { id: 1, name: "NAVCAM", full_name: d.title || "Navigation Camera" },
+          img_src: imgSrc,
+          earth_date: earthDate,
+          rover: {
+            id: 5,
+            name: "Curiosity",
+            status: "active",
+            landing_date: "2012-08-06",
+            launch_date: "2011-11-26",
+            max_sol: sol,
+            max_date: earthDate,
+            total_photos: 1000000,
+          },
+        };
+      });
 
     const data: MarsPhotoFeedData = { photos, fetchedAt: Date.now() };
     setCache(MARS_CACHE_KEY, data);
