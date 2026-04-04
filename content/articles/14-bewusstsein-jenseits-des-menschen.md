@@ -5,7 +5,7 @@ metaDescription: "Cambridge Declaration, Oktopus-Schmerzempfinden, Krähen-Metak
 image: /images/articles/bewusstsein-jenseits-thumbnail.jpg
 publishedAt: "2026-04-04"
 lang: de
-category: universum
+category: mensch
 readingTime: 10
 tags: ["Bewusstsein", "Kognitionsforschung", "Oktopus", "Corviden", "Schleimpilz", "Cambridge Declaration", "Neurowissenschaft"]
 ---

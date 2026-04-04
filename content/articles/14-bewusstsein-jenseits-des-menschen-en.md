@@ -5,7 +5,7 @@ metaDescription: "Cambridge Declaration, octopus pain, crow metacognition, slime
 image: /images/articles/bewusstsein-jenseits-thumbnail.jpg
 publishedAt: "2026-04-04"
 lang: en
-category: universum
+category: mensch
 readingTime: 8
 tags: ["Consciousness", "Cognitive Science", "Octopus", "Corvids", "Slime Mold", "Cambridge Declaration", "Neuroscience"]
 ---
