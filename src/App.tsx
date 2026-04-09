@@ -12,6 +12,8 @@ import { ArticlePage } from "./pages/ArticlePage";
 import { ArticleTeaser } from "./components/ArticleTeaser";
 import { NearEarthObjects } from "./components/NearEarthObjects";
 import { ImpactRisks } from "./components/ImpactRisks";
+import { ISSTracker } from "./components/ISS-Tracker";
+import { DailySpaceFacts } from "./components/DailySpaceFacts";
 import { EarthPage } from "./pages/EarthPage";
 import { MarsRoverPage } from "./pages/MarsRoverPage";
 import { ImpressumPage } from "./pages/ImpressumPage";
@@ -19,20 +21,43 @@ import { DatenschutzPage } from "./pages/DatenschutzPage";
 import { CookieConsent } from "./components/CookieConsent";
 import SolarPressureWidget from "./components/SolarPressureWidget";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { ErrorBoundary, NASAApiErrorBoundary } from "./components/ErrorBoundary";
 
 const BAZODIAC_URL = import.meta.env.VITE_BAZODIAC_URL || "https://bazodiac.space";
 
 function HomePage({ lang, t }: { lang: "de" | "en"; t: (k: string) => string }) {
   return (
     <>
-      <ApodHero t={t} />
+      <NASAApiErrorBoundary apiName="APOD">
+        <ApodHero t={t} />
+      </NASAApiErrorBoundary>
+      
       <FunnelCta t={t} bazodiacUrl={BAZODIAC_URL} />
-      <SolarPressureWidget t={t} lang={lang} />
-      <SpaceWeather t={t} lang={lang} />
+      
+      <NASAApiErrorBoundary apiName="Space Facts">
+        <DailySpaceFacts lang={lang} t={t} />
+      </NASAApiErrorBoundary>
+      
+      <NASAApiErrorBoundary apiName="Solar Activity">
+        <SolarPressureWidget t={t} lang={lang} />
+        <SpaceWeather t={t} lang={lang} />
+      </NASAApiErrorBoundary>
+      
       <FunnelCta t={t} bazodiacUrl={BAZODIAC_URL} variant="weather" />
-      <NearEarthObjects lang={lang} />
-      <ImpactRisks lang={lang} />
-      <PlanetPositions lang={lang} t={t} />
+      
+      <NASAApiErrorBoundary apiName="ISS Tracker">
+        <ISSTracker lang={lang} t={t} />
+      </NASAApiErrorBoundary>
+      
+      <NASAApiErrorBoundary apiName="Asteroid Data">
+        <NearEarthObjects lang={lang} />
+        <ImpactRisks lang={lang} />
+      </NASAApiErrorBoundary>
+      
+      <NASAApiErrorBoundary apiName="Planet Positions">
+        <PlanetPositions lang={lang} t={t} />
+      </NASAApiErrorBoundary>
+      
       <FunnelCta t={t} bazodiacUrl={BAZODIAC_URL} />
       <ArticleTeaser lang={lang} t={t} />
     </>
@@ -47,25 +72,27 @@ export default function App() {
   }, [lang]);
 
   return (
-    <div className="min-h-screen font-sans selection:bg-[#D4AF37]/20">
-      {/* Film grain texture */}
-      <div className="fixed inset-0 z-[100] sky-grain pointer-events-none" />
+    <ErrorBoundary>
+      <div className="min-h-screen font-sans selection:bg-[#D4AF37]/20">
+        {/* Film grain texture */}
+        <div className="fixed inset-0 z-[100] sky-grain pointer-events-none" />
 
-      <Header lang={lang} setLang={setLang} t={t} bazodiacUrl={BAZODIAC_URL} />
+        <Header lang={lang} setLang={setLang} t={t} bazodiacUrl={BAZODIAC_URL} />
 
-      <Routes>
-        <Route path="/" element={<HomePage lang={lang} t={t} />} />
-        <Route path="/artikel" element={<ArticlesPage lang={lang} t={t} bazodiacUrl={BAZODIAC_URL} />} />
-        <Route path="/artikel/:slug" element={<ArticlePage lang={lang} t={t} bazodiacUrl={BAZODIAC_URL} />} />
-        <Route path="/erde" element={<EarthPage lang={lang} t={t} />} />
-        <Route path="/mars-rover" element={<MarsRoverPage lang={lang} t={t} />} />
-        <Route path="/impressum" element={<ImpressumPage lang={lang} />} />
-        <Route path="/datenschutz" element={<DatenschutzPage lang={lang} />} />
-        <Route path="*" element={<NotFoundPage lang={lang} />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<HomePage lang={lang} t={t} />} />
+          <Route path="/artikel" element={<ArticlesPage lang={lang} t={t} bazodiacUrl={BAZODIAC_URL} />} />
+          <Route path="/artikel/:slug" element={<ArticlePage lang={lang} t={t} bazodiacUrl={BAZODIAC_URL} />} />
+          <Route path="/erde" element={<EarthPage lang={lang} t={t} />} />
+          <Route path="/mars-rover" element={<MarsRoverPage lang={lang} t={t} />} />
+          <Route path="/impressum" element={<ImpressumPage lang={lang} />} />
+          <Route path="/datenschutz" element={<DatenschutzPage lang={lang} />} />
+          <Route path="*" element={<NotFoundPage lang={lang} />} />
+        </Routes>
 
-      <Footer t={t} bazodiacUrl={BAZODIAC_URL} lang={lang} />
-      <CookieConsent lang={lang} />
-    </div>
+        <Footer t={t} bazodiacUrl={BAZODIAC_URL} lang={lang} />
+        <CookieConsent lang={lang} />
+      </div>
+    </ErrorBoundary>
   );
 }

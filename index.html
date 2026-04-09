@@ -5,18 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#020509" />
     <meta name="color-scheme" content="dark" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://tpc.googlesyndication.com https://fundingchoicesmessages.google.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://*.nasa.gov https://apod.nasa.gov https://images-assets.nasa.gov data:; media-src 'self' https://apod.nasa.gov https://www.youtube.com; connect-src 'self' https://api.nasa.gov https://epic.gsfc.nasa.gov https://images-api.nasa.gov https://ssd-api.jpl.nasa.gov https://pagead2.googlesyndication.com; frame-src https://www.youtube.com https://player.vimeo.com https://pagead2.googlesyndication.com;" />
-    <meta name="description" content="Echte NASA-Daten, echte Planetenpositionen, echtes Weltraumwetter. Der Himmel über deiner Signatur." />
-    <title>Bazodiac Sky — Der Himmel über deiner Signatur</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://tpc.googlesyndication.com https://fundingchoicesmessages.google.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://*.nasa.gov https://apod.nasa.gov https://images-assets.nasa.gov data:; media-src 'self' https://apod.nasa.gov https://www.youtube.com; connect-src 'self' https://api.nasa.gov https://api.open-notify.org https://epic.gsfc.nasa.gov https://images-api.nasa.gov https://ssd-api.jpl.nasa.gov https://services.swpc.noaa.gov https://pagead2.googlesyndication.com; frame-src https://www.youtube.com https://player.vimeo.com https://pagead2.googlesyndication.com;" />
+    <meta name="description" content="Live NASA-Daten: ISS Position, Sonnenstürme, Asteroiden, Mars Rover Bilder und Planetenpositionen in Echtzeit. Weltraum-Events verfolgen mit offiziellen Daten." />
+    <meta name="keywords" content="NASA Live Daten, ISS Position, Weltraum Wetter, Asteroiden heute, Mars Rover, Planeten Position, Sonnenstürme, Astronomie Deutschland" />
+    <meta name="author" content="Bazodiac" />
+    <meta name="robots" content="index, follow" />
+    <title>NASA Live-Daten: ISS, Mars, Asteroiden & Weltraum-Wetter | Bazodiac Sky</title>
 
-    <!-- Canonical & OpenGraph -->
+    <!-- Canonical & Language -->
     <link rel="canonical" href="https://sky.bazodiac.space/" />
+    <link rel="alternate" hreflang="de" href="https://sky.bazodiac.space/" />
+    <link rel="alternate" hreflang="en" href="https://sky.bazodiac.space/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://sky.bazodiac.space/" />
+    
+    <!-- OpenGraph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Bazodiac Sky" />
     <meta property="og:url" content="https://sky.bazodiac.space/" />
-    <meta property="og:title" content="Bazodiac Sky — Der Himmel über deiner Signatur" />
-    <meta property="og:description" content="Echte NASA-Daten, echte Planetenpositionen, echtes Weltraumwetter." />
-    <meta property="og:image" content="https://sky.bazodiac.space/images/articles/jwst-deep-field.jpg" />
+    <meta property="og:title" content="NASA Live-Daten: ISS Position, Mars Rover & Weltraum-Wetter" />
+    <meta property="og:description" content="Verfolgen Sie Live-Daten der NASA: ISS Position alle 10 Sekunden, aktuelle Mars Rover Bilder, erdnahe Asteroiden und Weltraum-Wetter mit Sonnenstürmen." />
+    <meta property="og:image" content="https://sky.bazodiac.space/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="de_DE" />
+    
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bazodiac" />
+    <meta name="twitter:title" content="NASA Live-Daten: ISS Position & Weltraum-Wetter" />
+    <meta name="twitter:description" content="Live NASA-Daten: ISS verfolgen, Mars Rover Bilder, Asteroiden-Überwachung und Sonnensturm-Warnungen in Echtzeit." />
+    <meta name="twitter:image" content="https://sky.bazodiac.space/twitter-card.jpg" />
 
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-1712273263687132" />
@@ -34,11 +52,82 @@
       });
     </script>
 
+    <!-- DNS Prefetch für Performance -->
+    <link rel="dns-prefetch" href="https://api.nasa.gov" />
+    <link rel="dns-prefetch" href="https://api.open-notify.org" />
+    <link rel="dns-prefetch" href="https://epic.gsfc.nasa.gov" />
+    <link rel="dns-prefetch" href="https://ssd-api.jpl.nasa.gov" />
+    <link rel="dns-prefetch" href="https://services.swpc.noaa.gov" />
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" href="https://fonts.gstatic.com/s/sora/v12/xMQOuFFYT72X5wkB_18qmnndmSdSnk-NKQI.woff2" as="font" type="font/woff2" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Sora:wght@100;300;400;600&display=swap" rel="stylesheet" />
+    
+    <!-- Structured Data für AI-Agenten -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Bazodiac Sky",
+      "description": "Live NASA-Daten Portal für Weltraum-Enthusiasten: ISS Tracking, Sonnenwetter, Asteroiden-Überwachung, Mars Rover Updates und Planeten-Positionen in Echtzeit",
+      "url": "https://sky.bazodiac.space",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bazodiac",
+        "url": "https://bazodiac.space"
+      },
+      "keywords": "NASA, ISS, Mars Rover, Asteroids, Space Weather, Solar Flares, Planetary Positions, APOD",
+      "inLanguage": "de-DE",
+      "potentialAction": {
+        "@type": "ViewAction",
+        "name": "ISS Live verfolgen",
+        "target": "https://sky.bazodiac.space/#iss-tracker"
+      }
+    }
+    </script>
+    
+    <!-- JSON-LD FAQ für AI-Agenten -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Wo ist die ISS gerade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die ISS-Position wird alle 10 Sekunden aktualisiert und zeigt Längen-/Breitengrad, Höhe (408km) und Geschwindigkeit (7.66 km/s). Daten von der Open-Notify ISS API."
+          }
+        },
+        {
+          "@type": "Question", 
+          "name": "Wie ist das aktuelle Weltraum-Wetter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Live-Daten von NASA DONKI zeigen Sonnenstürme (Kp-Index), X-Ray Flux, koronale Massenauswürfe (CME) und geomagnetische Aktivität der letzten 7 Tage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Asteroiden kommen der Erde nahe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "NASA NEO-API liefert erdnahe Objekte der nächsten 7 Tage mit Größe, Geschwindigkeit, Entfernung und Risikobewertung. JPL Sentry bewertet Einschlagswahrscheinlichkeiten."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
@@ -46,7 +135,17 @@
     <noscript>
       <div style="max-width:640px;margin:80px auto;padding:24px;color:#d7e6ff;font-family:sans-serif;">
         <h1 style="color:#D4AF37;font-size:24px;margin-bottom:16px;">Bazodiac Sky</h1>
-        <p>Bazodiac Sky zeigt echte astronomische Daten in Echtzeit: das NASA-Bild des Tages, Weltraumwetter mit Sonnenstürmen und geomagnetischen Indizes, erdnahe Asteroiden, Einschlagsrisiken (JPL Sentry), aktuelle Planetenpositionen berechnet mit der Astronomy Engine, Live-Bilder der Erde vom DSCOVR-Satelliten und aktuelle Fotos des Mars-Rovers Curiosity. Alle Daten stammen von offiziellen NASA Open APIs. Bitte aktivieren Sie JavaScript, um die interaktive Ansicht zu nutzen.</p>
+        <p><strong>Bazodiac Sky - Live NASA-Daten Portal</strong></p>
+        <p>Diese Anwendung zeigt astronomische Daten in Echtzeit:</p>
+        <ul style="margin:16px 0;padding-left:20px;">
+          <li><strong>ISS Live-Tracking:</strong> Aktuelle Position der Internationalen Raumstation alle 10 Sekunden</li>
+          <li><strong>Weltraum-Wetter:</strong> NASA DONKI Daten zu Sonnenstürmen, X-Ray Flux und geomagnetischen Störungen</li>
+          <li><strong>Erdnahe Asteroiden:</strong> NASA NEO-API mit aktuellen Asteroiden-Annäherungen</li>
+          <li><strong>Mars Rover:</strong> Neueste Bilder des Curiosity Rovers von der Mars-Oberfläche</li>
+          <li><strong>Planetenpositionen:</strong> Astronomisch berechnete Echtzeitpositionen aller Planeten</li>
+          <li><strong>APOD:</strong> NASA Astronomy Picture of the Day mit täglichen Weltraum-Bildern</li>
+        </ul>
+        <p>Alle Daten stammen von offiziellen NASA Open APIs. JavaScript erforderlich für die interaktive Ansicht.</p>
       </div>
     </noscript>
 
