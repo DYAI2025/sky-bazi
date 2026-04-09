@@ -12,7 +12,7 @@ import { ArticlePage } from "./pages/ArticlePage";
 import { ArticleTeaser } from "./components/ArticleTeaser";
 import { NearEarthObjects } from "./components/NearEarthObjects";
 import { ImpactRisks } from "./components/ImpactRisks";
-import { ISSTracker } from "./components/ISS-Tracker";
+import { ISSTracker } from "./components/ISSTracker";
 import { DailySpaceFacts } from "./components/DailySpaceFacts";
 import { EarthPage } from "./pages/EarthPage";
 import { MarsRoverPage } from "./pages/MarsRoverPage";

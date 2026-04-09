@@ -10,9 +10,9 @@ export const API_ENDPOINTS = {
   NASA_IMAGES: 'https://images-api.nasa.gov',
   NASA_SENTRY: 'https://ssd-api.jpl.nasa.gov',
   
-  // ISS Tracking (Open-Notify)
-  ISS_POSITION: 'https://api.open-notify.org/iss-now.json',
-  ISS_PASSES: 'https://api.open-notify.org/iss-pass.json',
+  // ISS Tracking — wheretheiss.at provides live altitude, velocity & visibility
+  // (Open-Notify's iss-pass.json was retired in 2022; iss-now.json has TLS issues.)
+  ISS_POSITION: 'https://api.wheretheiss.at/v1/satellites/25544',
   
   // Space Weather (NOAA)
   NOAA_BASE: 'https://services.swpc.noaa.gov',
