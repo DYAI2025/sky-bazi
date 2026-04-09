@@ -116,6 +116,12 @@
     animation: skeleton-slide 2.5s infinite ease-in-out;
     border-radius: 4px;
   }
+
+  /* ── Progress Bar Animation ────────────────────────────────────────────── */
+
+  .animate-progress-bar {
+    animation: progressBar 30s linear infinite;
+  }
 }
 
 /* ── Keyframes (outside layers — global, no specificity issue) ─────────── */
@@ -128,6 +134,11 @@
 @keyframes skeleton-slide {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
+}
+
+@keyframes progressBar {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -216,21 +216,10 @@ export function DailySpaceFacts({ lang, t }: DailySpaceFactsProps) {
         {/* Auto-progress indicator */}
         <div className="mt-6 bg-[rgba(215,230,255,0.10)] rounded-full h-1 overflow-hidden">
           <div 
-            className="h-full bg-gradient-to-r from-[#D4AF37] to-yellow-300 transition-all duration-300 ease-linear"
-            style={{ 
-              width: '100%',
-              animation: 'progressBar 30s linear infinite'
-            }}
+            className="h-full bg-gradient-to-r from-[#D4AF37] to-yellow-300 animate-progress-bar"
           />
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes progressBar {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(0%); }
-        }
-      `}</style>
     </section>
   );
 }
