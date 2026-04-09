@@ -11,7 +11,7 @@ interface CacheEntry<T> {
   timestamp: number;
 }
 
-function getCached<T>(key: string, ttlMs: number): T | null {
+export function getCached<T>(key: string, ttlMs: number): T | null {
   try {
     const raw = localStorage.getItem(`sky:${key}`);
     if (!raw) return null;
@@ -26,7 +26,7 @@ function getCached<T>(key: string, ttlMs: number): T | null {
   }
 }
 
-function setCache<T>(key: string, data: T): void {
+export function setCache<T>(key: string, data: T): void {
   try {
     const entry: CacheEntry<T> = { data, timestamp: Date.now() };
     localStorage.setItem(`sky:${key}`, JSON.stringify(entry));
@@ -41,11 +41,11 @@ function setCache<T>(key: string, data: T): void {
 
 const RATE_LIMIT_TTL = 30 * 60 * 1000; // 30 minutes
 
-function isRateLimited(cacheKey: string): boolean {
+export function isRateLimited(cacheKey: string): boolean {
   return getCached<boolean>(`rl:${cacheKey}`, RATE_LIMIT_TTL) === true;
 }
 
-function markRateLimited(cacheKey: string): void {
+export function markRateLimited(cacheKey: string): void {
   setCache(`rl:${cacheKey}`, true);
 }
 
