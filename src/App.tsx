@@ -27,7 +27,9 @@ const ImpressumPage  = lazy(() => import("./pages/ImpressumPage").then(m => ({ d
 const DatenschutzPage = lazy(() => import("./pages/DatenschutzPage").then(m => ({ default: m.DatenschutzPage })));
 const NotFoundPage   = lazy(() => import("./pages/NotFoundPage").then(m => ({ default: m.NotFoundPage })));
 
-const BAZODIAC_URL = import.meta.env.VITE_BAZODIAC_URL || "https://bazodiac.space";
+// Sanitize: strip any "www." — the canonical domain is bazodiac.space (no www)
+const BAZODIAC_URL = (import.meta.env.VITE_BAZODIAC_URL || "https://bazodiac.space")
+  .replace("://www.", "://");
 
 function PageSkeleton() {
   return (
