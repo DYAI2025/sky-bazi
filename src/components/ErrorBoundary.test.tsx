@@ -1,8 +1,9 @@
+import React from "react";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { ErrorBoundary, NASAApiErrorBoundary } from "./ErrorBoundary";
 
-function Bomb(): JSX.Element {
+function Bomb(): React.JSX.Element {
   throw new Error("Kaboom!");
 }
 
