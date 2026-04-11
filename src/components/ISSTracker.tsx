@@ -17,6 +17,7 @@ interface ISSPosition {
   velocity: number;        // km/h
   timestamp: number;       // ms since epoch
   visibility: "daylight" | "eclipsed";
+  location?: string;
 }
 
 interface ISSTrackerProps {
@@ -54,6 +55,21 @@ export function ISSTracker({ lang, t }: ISSTrackerProps) {
           throw new Error("Malformed ISS API response");
         }
 
+        // Fetch location name (reverse geocoding)
+        let location = t("iss.overOcean");
+        try {
+          const geoRes = await fetch(`${API_ENDPOINTS.ISS_REVERSE_GEO}/${lat},${lng}`);
+          if (geoRes.ok) {
+            const geoData = await geoRes.json();
+            if (geoData.country_code && geoData.country_code !== "??") {
+              const displayNames = new Intl.DisplayNames([lang], { type: 'region' });
+              location = displayNames.of(geoData.country_code) || location;
+            }
+          }
+        } catch (geoErr) {
+          console.warn("ISS Geo API error:", geoErr);
+        }
+
         if (!mounted) return;
         setPosition({
           latitude: lat,
@@ -62,6 +78,7 @@ export function ISSTracker({ lang, t }: ISSTrackerProps) {
           velocity: vel,
           timestamp: ts * 1000,
           visibility: data.visibility === "eclipsed" ? "eclipsed" : "daylight",
+          location,
         });
         setError(null);
       } catch (err) {
@@ -159,9 +176,14 @@ export function ISSTracker({ lang, t }: ISSTrackerProps) {
           </div>
           <div>
             <h2 className="text-xl font-serif text-[#D4AF37]">{t("iss.title")}</h2>
-            <p className="text-xs text-[rgba(215,230,255,0.50)]">
-              {t("iss.updated")} {timeSinceUpdate}{t("iss.secondsAgo")} · {isDaylight ? "☀️" : "🌙"} {visibilityLabel}
-            </p>
+            <div className="flex flex-col gap-0.5">
+              <p className="text-sm text-[rgba(215,230,255,0.92)]">
+                {t("iss.location")} <span className="text-[#D4AF37] font-medium">{position.location}</span>
+              </p>
+              <p className="text-xs text-[rgba(215,230,255,0.50)]">
+                {t("iss.updated")} {timeSinceUpdate}{t("iss.secondsAgo")} · {isDaylight ? "☀️" : "🌙"} {visibilityLabel}
+              </p>
+            </div>
           </div>
         </div>
 

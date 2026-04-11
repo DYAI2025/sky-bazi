@@ -75,6 +75,8 @@ const translations = {
   "iss.velocity":    { de: "Geschwindigkeit", en: "Velocity" },
   "iss.daylight":    { de: "Sonnenlicht", en: "Daylight" },
   "iss.eclipse":     { de: "Erdschatten", en: "Eclipse" },
+  "iss.location":    { de: "Befindet sich gerade über", en: "Currently located over" },
+  "iss.overOcean":   { de: "dem Ozean", en: "the ocean" },
   "iss.daylightAria":{ de: "ISS im Sonnenlicht", en: "ISS in daylight" },
   "iss.eclipseAria": { de: "ISS im Erdschatten", en: "ISS in Earth's shadow" },
   "iss.updated":     { de: "Aktualisiert vor", en: "Updated" },

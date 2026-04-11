@@ -13,6 +13,7 @@ export const API_ENDPOINTS = {
   // ISS Tracking — wheretheiss.at provides live altitude, velocity & visibility
   // (Open-Notify's iss-pass.json was retired in 2022; iss-now.json has TLS issues.)
   ISS_POSITION: 'https://api.wheretheiss.at/v1/satellites/25544',
+  ISS_REVERSE_GEO: 'https://api.wheretheiss.at/v1/coordinates',
   
   // Space Weather (NOAA)
   NOAA_BASE: 'https://services.swpc.noaa.gov',
